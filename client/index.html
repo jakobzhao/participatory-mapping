@@ -73,10 +73,9 @@
             });
 
             let data = await response.json();
-            console.log(data);
-            for (let i = 0; i < data.length; i++) {
+            for (let i = 0; i < data.rows.length; i++) {
                 let marker = new maplibregl.Marker()
-                    .setLngLat([data[i].lng, data[i].lat])
+                    .setLngLat([data.rows[i].lng, data.rows[i].lat])
                     .addTo(map);
             }
         }  );
