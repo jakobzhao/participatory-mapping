@@ -1,6 +1,13 @@
 // This document provides the connection to the database!
 
 const { Pool } = require('pg');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+// database configurations on the local machine
+const connectionString = process.env.DATABASE_URL;
+
 
 
 const pool = new Pool({
@@ -10,6 +17,7 @@ const pool = new Pool({
     }
   });
   
+
 
 
 pool.on('connect', () => {
