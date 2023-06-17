@@ -45,7 +45,12 @@
     <div id="map"></div>
     <script>
         let popup = null;
-        let geojson = null;
+        let geojson = {
+
+                'type': 'FeatureCollection',
+                'features': []
+
+            };
         let map = new maplibregl.Map({
             container: 'map', // container id
             style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=Cusoe5zmfmn26glFoeoe', // style URL
@@ -75,29 +80,33 @@
 
 
 
-        // map.on('mouseenter', 'places', function (e) {
-        //     // Change the cursor style as a UI indicator.
-        //     map.getCanvas().style.cursor = 'pointer';
+        map.on('mouseenter', 'placesLayer', function (e) {
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
 
-        //     var coordinates = e.features[0].geometry.coordinates.slice();
-        //     var description = e.features[0].properties.description;
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var content = e.features[0].properties.content;
+            var contributor = e.features[0].properties.contributor;
 
-        //     // Ensure that if the map is zoomed out such that multiple
-        //     // copies of the feature are visible, the popup appears
-        //     // over the copy being pointed to.
-        //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        //     }
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
 
-        //     // Populate the popup and set its coordinates
-        //     // based on the feature found.
-        //     popup.setLngLat(coordinates).setHTML(description).addTo(map);
-        // });
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            popup = new maplibregl.Popup()
+                .setLngLat(coordinates)
+                .setHTML("<p><b>" + contributor + "</b> <p>said:</p> " + content + "</p>")
+                .addTo(map);
+        });
 
-        // map.on('mouseleave', 'places', function () {
-        //     map.getCanvas().style.cursor = '';
-        //     popup.remove();
-        // });
+        map.on('mouseleave', 'placesLayer', function () {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+        });
 
 
 
@@ -107,13 +116,7 @@
             });
 
             let data = await response.json();
-            geojson = {
-
-                'type': 'FeatureCollection',
-                'features': []
-
-            }
-
+      
             for (let i = 0; i < data.rows.length; i++) {
 
                 geojson.features.push({
@@ -141,7 +144,7 @@
             });
 
             map.addLayer({
-                'id': 'placelayer',
+                'id': 'placesLayer',
                 'type': 'circle',
                 'source': 'places',
                 'paint': {
@@ -176,17 +179,21 @@
                 //   checkStatus(err);
             } finally {
                 popup.remove();
+                geojson.features.push({
+                    'type': 'Feature',
+                    'properties': {
+                        'contributor': contributor,
+                        'content': content,
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [lngLat.lng, lngLat.lat]
+                    }
 
-                let marker = new maplibregl.Marker()
-                    .setLngLat([lngLat.lng, lngLat.lat])
-                    .setPopup(new maplibregl.Popup().setHTML('<h3>' + data.rows[i].contributor + '</h3> said: <p>' + data.rows[i].content + '</p>'))
-                    .addTo(map);
+                });
+                map.getSource('places').setData(geojson);
 
             }
-
-
-
-            // e.preventDefault();
         }
 
 
