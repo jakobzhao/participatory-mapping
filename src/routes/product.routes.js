@@ -9,7 +9,7 @@ const productController = require('../controllers/product.controller');
 router.get('/record/:id', productController.getRecord);
 
 // create new record
-router.post('/addRecord', productController.addRecord);
+router.post('/add-record', productController.addRecord);
 
 
 module.exports = router;

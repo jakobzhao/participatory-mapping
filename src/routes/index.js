@@ -1,7 +1,7 @@
 // Index.js allows us to set up our root API function and router.
 
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 
 const router = express.Router();
 
