@@ -1,0 +1,19 @@
+{
+  "name": "participatory-mapping",
+  "version": "1.0.0",
+  "description": "a minimum viable product for participatory mapping",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakobzhao/participatory-mapping.git"
+  },
+  "author": "Bo Zhao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakobzhao/participatory-mapping/issues"
+  },
+  "homepage": "https://github.com/jakobzhao/participatory-mapping#readme"
+}
