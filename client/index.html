@@ -73,9 +73,11 @@
             //fetch data from api/record
 
 
-            let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record', {
+            let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/get-record', {
                 method: 'GET'
             });
+            consele.log(response);
+
             let data = await response.json();
             console.log(data);
             for (let i = 0; i < data.length; i++) {
