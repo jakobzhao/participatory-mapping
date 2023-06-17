@@ -1,4 +1,4 @@
-// All of our routers, and functionabilities that we are going to perform
+// All of our routers, and functionalities that we are going to perform
 // add user, delete user, names, etc...
 
 const router = require('express-promise-router')();

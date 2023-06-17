@@ -9,9 +9,9 @@ const json2csvParser = new Parser();
 //  * @param {url} req: request URL data from user selected venue/location
 //  * @param {*} res: all comments of the corresponding location (vid)
 //  */
-exports.getComment = async (req, res) => {
+exports.getRecord = async (req, res) => {
     let locationId = req.params.id;
-    let response = await db.query('SELECT * FROM "tblReview" ' + 'WHERE hid = ' + locationId + 'ORDER BY created_at DESC;');
+    let response = await db.query('SELECT * FROM "tblRecord" ' + 'WHERE hid = ' + locationId + 'ORDER BY created_at DESC;');
     res.status(200).send(response.rows);
 };
 
@@ -20,13 +20,13 @@ exports.getComment = async (req, res) => {
 //  * @param {form} req - form body that contains user selected information
 //  * @param {status} res - confirmation that comment has been added into the review table
 //  */
-exports.addComment = async(req, res) => {
+exports.addRecord = async(req, res) => {
     let {contributor, content, lat, lng} = req.body;
     // let currTime = new Date().toISOString();
     console.log('INSERT INTO "tblRecord"(contributor, content, lat, lng) VALUES ($1, $2, $3, $4)',
         [contributor, content, lat, lng]);
     let {recordRows} = await db.query(
-        'INSERT INTO "tblReview"(contributor, content, lat, lng) VALUES ($1, $2, $3, $4)',
+        'INSERT INTO "tblRecord"(contributor, content, lat, lng) VALUES ($1, $2, $3, $4)',
         [contributor, content, lat, lng]
     )
 
