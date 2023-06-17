@@ -1,19 +1,6 @@
 // This document provides the connection to the database!
 
 const { Pool } = require('pg');
-// const dotenv = require('dotenv');
-
-// dotenv.config();
-
-// // database configurations on the local machine
-// const connectionString = process.env.DATABASE_URL;
-// const pool = new Pool({
-//     connectionString,
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
-
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -26,7 +13,7 @@ const pool = new Pool({
 
 
 pool.on('connect', () => {
-    console.log("Database connection success - connected to doyenne!");
+    console.log("Database connection success - connected to heroku database!");
 });
 
 module.exports = {
