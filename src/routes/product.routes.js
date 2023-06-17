@@ -4,13 +4,11 @@
 const router = require('express-promise-router')();
 const productController = require('../controllers/product.controller');
 
-// function to enable user login
 
-
-// get all comments from comment table
+// get all record from tblRecord table
 router.get('/record/:id', productController.getRecord);
 
-// create new comment
+// create new record
 router.post('/add-record', productController.addRecord);
 
 
