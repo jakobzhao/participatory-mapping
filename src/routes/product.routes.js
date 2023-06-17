@@ -8,10 +8,10 @@ const productController = require('../controllers/product.controller');
 
 
 // get all comments from comment table
-router.get('/comment/:id', productController.getComment);
+router.get('/record/:id', productController.getRecord);
 
 // create new comment
-router.post('/add-comment', productController.addComment);
+router.post('/add-record', productController.addRecord);
 
 
 module.exports = router;
