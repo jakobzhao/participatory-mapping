@@ -17,4 +17,8 @@ app.use(express.json({ type: 'application/vnd.api+json' }));
 app.use(index);
 app.use('/api/',userRoute);
 
+app.use('/', express.static('client'))
+
 module.exports = app;
+
+
