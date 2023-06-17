@@ -1,9 +1,9 @@
 // This document provides the connection to the database!
 
 const { Pool } = require('pg');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 
-dotenv.config();
+// dotenv.config();
 
 // database configurations on the local machine
 // const connectionString = process.env.DATABASE_URL;
@@ -17,12 +17,13 @@ dotenv.config();
 
 
 const pool = new Pool({
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT,
-    database: process.env.DATABASE_NAME,
-    user: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
   });
+  
+
 
 pool.on('connect', () => {
     console.log("Database connection success - connected to doyenne!");
