@@ -62,14 +62,15 @@
                 .setLngLat(e.lngLat)
                 .setHTML(popupContent)
                 .addTo(map);
-
+            
             document.getElementById('submit').addEventListener('click', submitNewRecord);
+           
         });
 
         window.addEventListener("load", init);
         async function init() {
             try {
-                let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record');
+                let response = await fetch('api/record');
                 let data = await response.json();
                 console.log(data);
                 for (let i = 0; i < data.length; i++) {
@@ -116,10 +117,12 @@
             }
 
             try {
-                await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/add-record', settings);
+                await fetch('api/add-record', settings);
             //    confirmationReview();
             } catch (err) {
              //   checkStatus(err);
+            } finally {
+                popup.remove();
             }
 
 
