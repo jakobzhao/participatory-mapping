@@ -13,12 +13,5 @@ router.get('/api', (req, res) => {
   });
 });
 
-// router.get('/', function(req, res) {
-//   res.sendFile(path.join(__dirname + '../../index.html'));
-//   res.render("about", { title: "Hey", message: "Hello there!" });
-// });
-
-
-
 
 module.exports = router;
