@@ -69,12 +69,12 @@
 
 
         async function submitNewRecord() {
-            let name = document.getElementById('name').value;
+            let contributor = document.getElementById('name').value;
             let content = document.getElementById('content').value;
             let lngLat = popup.getLngLat();
 
             let newRecord = new URLSearchParams();
-            newRecord.append('name', name);
+            newRecord.append('contributor', contributor);
             newRecord.append('content', content);
             newRecord.append('lng', lngLat.lng);
             newRecord.append('lat', lngLat.lat);
