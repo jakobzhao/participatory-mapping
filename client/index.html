@@ -62,25 +62,28 @@
                 .setLngLat(e.lngLat)
                 .setHTML(popupContent)
                 .addTo(map);
-            
+
             document.getElementById('submit').addEventListener('click', submitNewRecord);
-           
+
         });
 
         window.addEventListener("load", init);
         async function init() {
-            try {
-                let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record');
-                let data = await response.json();
-                console.log(data);
-                for (let i = 0; i < data.length; i++) {
-                    let marker = new maplibregl.Marker()
-                        .setLngLat([data[i].lng, data[i].lat])
-                        .addTo(map);
-                }
-            } catch (err) {
-                console.log(err);
+
+            //fetch data from api/record
+
+
+            let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record', {
+                method: 'GET'
+            });
+            let data = await response.json();
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                let marker = new maplibregl.Marker()
+                    .setLngLat([data[i].lng, data[i].lat])
+                    .addTo(map);
             }
+
         }
 
         // map load a geojson points data
@@ -118,9 +121,9 @@
 
             try {
                 await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/add-record', settings);
-            //    confirmationReview();
+                //    confirmationReview();
             } catch (err) {
-             //   checkStatus(err);
+                //   checkStatus(err);
             } finally {
                 popup.remove();
             }
@@ -130,7 +133,7 @@
         }
 
 
-    
+
 
     </script>
 

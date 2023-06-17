@@ -5,13 +5,15 @@ const json2csvParser = new Parser();
 
 
 // /**
-//  * Comments/Reviews: Obtains all records
+//  * getRecords: Obtains all records
 //  */
-exports.getRecord = async (res) => {
-    let response = await db.query('SELECT * FROM "tblRecord" orderby "id" desc');
-    console.log("fdsafdsaf");
-    res.status(200).send(response.rows);
-};
+// getRecords: Obtains all records
+exports.getRecords = async(req, res) => {//
+    const response = await db.query('SELECT * FROM "tblRecord" ORDER BY id ASC');//
+    res.status(200).send(response.rows);//
+};//
+
+
 
 // /**
 //  * Insert Comment/Review: Inserts user insert data of review into tblReview in the database
