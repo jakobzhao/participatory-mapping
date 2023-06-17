@@ -46,10 +46,8 @@
     <script>
         let popup = null;
         let geojson = {
-
                 'type': 'FeatureCollection',
                 'features': []
-
             };
         let map = new maplibregl.Map({
             container: 'map', // container id
@@ -57,49 +55,6 @@
             center: [-122.3321, 47.6062], // starting position [lng, lat]
             zoom: 12 // starting zoom
         });
-
-
-        const popupContent = '<div id="popup"><input type="text" id="name" placeholder="Input your name here..."><input type="text" id="content" placeholder="Input your message here..."><button id="submit">submit</button></div>';
-        map.on('click', function (e) {
-            //close popup if one is already open
-            if (popup) {
-                popup.remove();
-            }
-
-            popup = new maplibregl.Popup({ closeOnClick: false })
-                .setLngLat(e.lngLat)
-                .setHTML(popupContent)
-                .addTo(map);
-
-            document.getElementById('submit').addEventListener('click', submitNewRecord);
-            e.preventDefault();
-
-        });
-
-
-
-
-
-        map.on('mouseenter', 'placesLayer', function (e) {
-            // Change the cursor style as a UI indicator.
-            map.getCanvas().style.cursor = 'pointer';
-
-            var coordinates = e.features[0].geometry.coordinates;
-            var content = e.features[0].properties.content;
-            var contributor = e.features[0].properties.contributor;
-
-     
-            popup = new maplibregl.Popup()
-                .setLngLat(coordinates)
-                .setHTML("<p><b>" + contributor + "</b> <i>said:</i> " + content + "</p>")
-                .addTo(map);
-        });
-
-        map.on('mouseleave', 'placesLayer', function () {
-            map.getCanvas().style.cursor = '';
-            popup.remove();
-        });
-
 
 
         window.addEventListener("load", async function () {
@@ -146,6 +101,52 @@
             });
 
         });
+
+
+
+
+
+
+
+        map.on('mouseenter', 'placesLayer', function (e) {
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
+
+            var coordinates = e.features[0].geometry.coordinates;
+            var content = e.features[0].properties.content;
+            var contributor = e.features[0].properties.contributor;
+
+     
+            popup = new maplibregl.Popup()
+                .setLngLat(coordinates)
+                .setHTML("<p><b>" + contributor + "</b> <i>said:</i> " + content + "</p>")
+                .addTo(map);
+        });
+
+        map.on('mouseleave', 'placesLayer', function () {
+            map.getCanvas().style.cursor = '';
+            popup.remove();
+        });
+
+
+        
+        map.on('click', function (e) {
+            //close popup if one is already open
+            if (popup) {
+                popup.remove();
+            }
+            const popupContent = '<div id="popup"><input type="text" id="name" placeholder="Input your name here..."><input type="text" id="content" placeholder="Input your message here..."><button id="submit">submit</button></div>';
+            popup = new maplibregl.Popup({ closeOnClick: false })
+                .setLngLat(e.lngLat)
+                .setHTML(popupContent)
+                .addTo(map);
+
+            document.getElementById('submit').addEventListener('click', submitNewRecord);
+            e.preventDefault();
+
+        });
+
+
 
         async function submitNewRecord() {
             let contributor = document.getElementById('name').value;
