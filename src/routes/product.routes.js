@@ -6,7 +6,7 @@ const productController = require('../controllers/product.controller');
 
 
 // get all record from tblRecord table
-router.get('/record/:id', productController.getRecord);
+router.get('/record', productController.getRecord);
 
 // create new record
 router.post('/add-record', productController.addRecord);

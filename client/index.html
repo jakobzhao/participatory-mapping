@@ -66,22 +66,37 @@
             document.getElementById('submit').addEventListener('click', submitNewRecord);
         });
 
+        window.addEventListener("load", init);
+        async function init() {
+            try {
+                let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record');
+                let data = await response.json();
+                console.log(data);
+                for (let i = 0; i < data.length; i++) {
+                    let marker = new maplibregl.Marker()
+                        .setLngLat([data[i].lng, data[i].lat])
+                        .addTo(map);
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        }
 
         // map load a geojson points data
         map.on('load', function () {
-            map.addSource('points', {
-                'type': 'geojson',
-                'data': 'https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record'
-            });
-            map.addLayer({
-                'id': 'points',
-                'type': 'circle',
-                'source': 'points',
-                'paint': {
-                    'circle-radius': 6,
-                    'circle-color': '#B42222'
-                }
-            });
+            // map.addSource('points', {
+            //     'type': 'geojson',
+            //     'data': 'https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record'
+            // });
+            // map.addLayer({
+            //     'id': 'points',
+            //     'type': 'circle',
+            //     'source': 'points',
+            //     'paint': {
+            //         'circle-radius': 6,
+            //         'circle-color': '#B42222'
+            //     }
+            // });
         });
         async function submitNewRecord() {
             let contributor = document.getElementById('name').value;
