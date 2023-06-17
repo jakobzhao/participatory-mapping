@@ -46,8 +46,8 @@
         let map = new maplibregl.Map({
             container: 'map', // container id
             style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=Cusoe5zmfmn26glFoeoe', // style URL
-            center: [0, 0], // starting position [lng, lat]
-            zoom: 1 // starting zoom
+            center: [-122.3321, 47.6062], // starting position [lng, lat]
+            zoom: 12 // starting zoom
         });
 
 
@@ -67,7 +67,22 @@
         });
 
 
-
+        // map load a geojson points data
+        map.on('load', function () {
+            map.addSource('points', {
+                'type': 'geojson',
+                'data': 'https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record'
+            });
+            map.addLayer({
+                'id': 'points',
+                'type': 'circle',
+                'source': 'points',
+                'paint': {
+                    'circle-radius': 6,
+                    'circle-color': '#B42222'
+                }
+            });
+        });
         async function submitNewRecord() {
             let contributor = document.getElementById('name').value;
             let content = document.getElementById('content').value;

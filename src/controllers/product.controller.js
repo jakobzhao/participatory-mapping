@@ -9,9 +9,8 @@ const json2csvParser = new Parser();
 //  * @param {url} req: request URL data from user selected venue/location
 //  * @param {*} res: all comments of the corresponding location (vid)
 //  */
-exports.getRecord = async (req, res) => {
-    let locationId = req.params.id;
-    let response = await db.query('SELECT * FROM "tblRecord" ' + 'WHERE hid = ' + locationId + 'ORDER BY created_at DESC;');
+exports.getRecord = async (res) => {
+    let response = await db.query('SELECT * FROM "tblRecord"');
     res.status(200).send(response.rows);
 };
 
