@@ -1,26 +1,26 @@
 // This document provides the connection to the database!
 
 const { Pool } = require('pg');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 
-dotenv.config();
+// dotenv.config();
 
-// database configurations on the local machine
-const connectionString = process.env.DATABASE_URL;
-const pool = new Pool({
-    connectionString,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
-
-
+// // database configurations on the local machine
+// const connectionString = process.env.DATABASE_URL;
 // const pool = new Pool({
-//     connectionString: process.env.DATABASE_URL,
+//     connectionString,
 //     ssl: {
-//       rejectUnauthorized: false
+//         rejectUnauthorized: false
 //     }
-//   });
+// });
+
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
   
 
 
