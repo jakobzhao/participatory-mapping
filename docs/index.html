@@ -17,7 +17,21 @@
             bottom: 0;
             width: 100%;
         }
-
+        #info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 350px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #000000;
+            z-index: 1;
+        }
         #popup {
             padding: 10px;
 
@@ -43,6 +57,13 @@
 
 <body>
     <div id="map"></div>
+    <div id="info">
+       
+        <h3>A Minimum Viable Participatory Mapping </h3>
+        <h4>Bo Zhao, zhaobo@uw.edu, University of Washington Seattle</h4>
+        <p>This map is a minimum viable solution for participatory mapping. Users can contribute their local knowledge by clicking on the map, submitting their information, and seeing it represented as a red dot. Existing contributions can also be viewed as red dots. While this map offers basic functionality, it can be expanded or repurposed for various participatory mapping projects. Examples include <a href="https://hgis.uw.edu/lgbtqspaces/" target="_blank"><b>Shifting LGBTQ+ spaces</b></a>, <a href="https://hgis.uw.edu/chop"> <b>Archiving the CHOP</b></a> and <a href="https://www.queeringthemap.com/" target="_blank"><b>Queering the Map</b></a>. You can find an instruction on creating a participatory mapping project from <a href="https://www.github.com/jakobzhao/participatory-mapping" target="_blank">here</a>.</p> 
+    
+    </div>
     <script>
         let popup = null;
         let geojson = {
@@ -51,7 +72,7 @@
             };
         let map = new maplibregl.Map({
             container: 'map', // container id
-            style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=Cusoe5zmfmn26glFoeoe', // style URL
+            style: 'https://api.maptiler.com/maps/dataviz/style.json?key=Cusoe5zmfmn26glFoeoe', // style URL
             center: [-122.3321, 47.6062], // starting position [lng, lat]
             zoom: 12 // starting zoom
         });
