@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Display a map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+
+        }
+
+        #info {
+            position: absolute;
+            z-index: 100;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 50px;
+            /* make this element displayed on top of the map element*/
+
+            color: aqua;
+            /* visibility: hidden; */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="info"></div>
+    <script>
+        let popup = null;
+        let map = new maplibregl.Map({
+            container: 'map', // container id
+            style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=Cusoe5zmfmn26glFoeoe', // style URL
+            center: [0, 0], // starting position [lng, lat]
+            zoom: 1 // starting zoom
+        });
+
+
+        const popupContent = '<div><input type="text" id="name" placeholder="name"><input type="text" id="content" placeholder="content"><button id="submit">submit</button></div>';
+        map.on('click', function (e) {
+            //close popup if one is already open
+            if (popup) {
+                popup.remove();
+            }
+
+            popup = new maplibregl.Popup({ closeOnClick: false })
+                .setLngLat(e.lngLat)
+                .setHTML(popupContent)
+                .addTo(map);
+
+            document.getElementById('submit').addEventListener('click', submitNewRecord);
+        });
+
+
+
+        async function submitNewRecord() {
+            let name = document.getElementById('name').value;
+            let content = document.getElementById('content').value;
+            let lngLat = popup.getLngLat();
+
+            let newRecord = new URLSearchParams();
+            newRecord.append('name', name);
+            newRecord.append('content', content);
+            newRecord.append('lng', lngLat.lng);
+            newRecord.append('lat', lngLat.lat);
+
+
+            let settings = {
+                method: 'POST',
+                body: newRecord
+            }
+
+            try {
+                await fetch('https://participatory-mapping-service.herokuapp.com/api/add-record', settings);
+            //    confirmationReview();
+            } catch (err) {
+             //   checkStatus(err);
+            }
+
+
+
+
+            e.preventDefault();
+        }
+
+
+    
+
+    </script>
+
+</body>
+
+</html>
