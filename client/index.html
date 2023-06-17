@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Display a map</title>
+    <title>Participatory Mapping</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.js"></script>
     <link href="https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.css" rel="stylesheet" />
@@ -67,16 +67,10 @@
 
         });
 
-        window.addEventListener("load", init);
-        async function init() {
-
-            //fetch data from api/record
-
-
+        window.addEventListener("load", async function () {
             let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/get-record', {
                 method: 'GET'
             });
-            consele.log(response);
 
             let data = await response.json();
             console.log(data);
@@ -85,25 +79,10 @@
                     .setLngLat([data[i].lng, data[i].lat])
                     .addTo(map);
             }
+        }  );
+   
 
-        }
 
-        // map load a geojson points data
-        map.on('load', function () {
-            // map.addSource('points', {
-            //     'type': 'geojson',
-            //     'data': 'https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/record'
-            // });
-            // map.addLayer({
-            //     'id': 'points',
-            //     'type': 'circle',
-            //     'source': 'points',
-            //     'paint': {
-            //         'circle-radius': 6,
-            //         'circle-color': '#B42222'
-            //     }
-            // });
-        });
         async function submitNewRecord() {
             let contributor = document.getElementById('name').value;
             let content = document.getElementById('content').value;
@@ -128,7 +107,12 @@
                 //   checkStatus(err);
             } finally {
                 popup.remove();
+
+                let marker = new maplibregl.Marker()
+                    .setLngLat([lngLat.lng, lngLat.lat])
+                    .addTo(map);
             }
+
 
 
             // e.preventDefault();
