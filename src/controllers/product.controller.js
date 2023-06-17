@@ -5,12 +5,11 @@ const json2csvParser = new Parser();
 
 
 // /**
-//  * Comments/Reviews: Obtains all reviews/comments of a specific location (obtained through using vid)
-//  * @param {url} req: request URL data from user selected venue/location
-//  * @param {*} res: all comments of the corresponding location (vid)
+//  * Comments/Reviews: Obtains all records
 //  */
 exports.getRecord = async (res) => {
-    let response = await db.query('SELECT * FROM "tblRecord"');
+    let response = await db.query('SELECT * FROM "tblRecord" orderby "id" desc');
+    console.log("fdsafdsaf");
     res.status(200).send(response.rows);
 };
 
@@ -30,7 +29,7 @@ exports.addRecord = async(req, res) => {
     )
 
     res.status(200).send({
-        message: "comment added into record table!",
+        message: "record added into record table!",
         body: {
             record: {contributor, content, lat, lng}
         }
