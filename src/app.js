@@ -3,11 +3,6 @@ const cors = require('cors');
 const app = express();
 const index = require('./routes/index');
 const userRoute = require('./routes/product.routes');
-// let corsOptions = {
-//     origin: ['http://localhost:3000'],
-//     optionsSuccessStatus: 200
-// }
-// app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
