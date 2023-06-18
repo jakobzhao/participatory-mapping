@@ -192,6 +192,7 @@ This participatory mapping tool enables the data management through a cloud-base
 
 ## 6. Publish the map
 
+### access the map
 
 ### switch the basemap
 
