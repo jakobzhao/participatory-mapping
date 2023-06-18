@@ -1,8 +1,6 @@
 # A Minimum Viable Participatory Mapping
-### Bo Zhao | Department of Geography, University of Washington
-### June 17th, 2023 
 
-## 1. Introduction
+**Bo Zhao | Department of Geography, University of Washington | June 17th, 2023**
 
 This is a tutorial to make a minimum viable participatory mapping project. Participatory mapping, also known as community-based mapping, is a general term that refers to the process of creating maps by, for, or with local communities, often in collaboration with specialists. It allows local communities to represent their own perceptions, knowledge, and experiences about their environment. The aim is to produce a map that combines local knowledge with spatial data to support decision-making processes. These maps can be used for a variety of purposes, such as natural resource management, land use planning, or advocacy for land rights.
 
