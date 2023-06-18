@@ -76,8 +76,8 @@ In this step, we will walk through the forked repository and understand the stru
 The function of each folder and main file are listed below:
 
 • `docs`: This is usually a folder where documentation files are stored. It might contain additional information about how to use the software, the design decisions that were made during its development, or any other kind of information that might be helpful to users or developers.
-
-    • `docs/index.html`: serves as the main HTML document for the web application, which is a participatory mapping tool.
+    
+- `docs/index.html`: serves as the main HTML document for the web application, which is a participatory mapping tool.
 
 • `node_modules`: This is a folder where Node.js modules (or packages) are stored. When you use Node.js and install packages using the Node Package Manager (npm), those packages are placed in this folder.
 
