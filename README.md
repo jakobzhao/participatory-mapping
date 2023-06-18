@@ -1,5 +1,6 @@
 # A Minimum Viable Participatory Mapping
-### Bo Zhao | June 17th, 2023 | Department of Geography, University of Washington
+### Bo Zhao | Department of Geography, University of Washington
+### June 17th, 2023 
 
 ## Introduction
 
