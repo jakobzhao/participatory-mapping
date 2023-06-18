@@ -1,23 +1,35 @@
+// Import required modules
 const express = require('express');
 const cors = require('cors');
+
+// Create an Express application
 const app = express();
-const index = require('./routes/index');
-const userRoute = require('./routes/product.routes');
+
+// Define CORS options
 let corsOptions = {
     origin: ['https://localhost', 'https://www.github.io'],
     optionsSuccessStatus: 200
 }
-// , 'https://jakobzhao.github.io','http://jakobzhao.github.io'
+
+// Enable CORS for the application using the defined options
 app.use(cors(corsOptions));
 
+// Enable parsing of URL-encoded data
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-app.use(express.json({ type: 'application/vnd.api+json' }));
-app.use(index);
-app.use('/api/',userRoute);
 
+// Enable parsing of JSON data with specific content type
+app.use(express.json({ type: 'application/vnd.api+json' }));
+
+// Mount the index route
+const index = require('./routes/index');
+app.use(index);
+
+// Mount the userRoute for API routes starting with '/api/'
+const userRoute = require('./routes/product.routes');
+app.use('/api/', userRoute);
+
+// Serve static files from the 'docs' directory for the root path
 app.use('/', express.static('docs'))
 
+// Export the app module
 module.exports = app;
-
-

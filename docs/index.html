@@ -5,7 +5,9 @@
     <title>Participatory Mapping</title>
     <script src="https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.js"></script>
     <link href="https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <!-- Styles for the map and popup -->
     <style>
+        /* Basic CSS for the page */
         body {
             margin: 0;
             padding: 0;
@@ -17,6 +19,7 @@
             bottom: 0;
             width: 100%;
         }
+        
         #info {
             position: absolute;
             top: 0;
@@ -32,9 +35,9 @@
             color: #000000;
             z-index: 1;
         }
+        
         #popup {
             padding: 10px;
-
         }
 
         #name {
@@ -56,20 +59,40 @@
 </head>
 
 <body>
+    <!-- Map container -->
     <div id="map"></div>
+    
+    <!-- Information box -->
     <div id="info">
-       
         <h3>A Minimum Viable Participatory Mapping </h3>
         <h4>Bo Zhao | University of Washington </h4>
-        <p>This map is a minimum viable solution for participatory mapping. Users can contribute their local knowledge by clicking on the map, submitting their information, and seeing it represented as a red dot. Existing contributions can also be viewed as red dots. While this map offers basic functionality, it can be expanded or repurposed for various participatory mapping projects. Examples include <a href="https://hgis.uw.edu/lgbtqspaces/" target="_blank"><b>Shifting LGBTQ+ spaces</b></a>, <a href="https://hgis.uw.edu/chop"> <b>Archiving the CHOP</b></a> and <a href="https://www.queeringthemap.com/" target="_blank"><b>Queering the Map</b></a>. You can find an instruction on creating a participatory mapping project from <a href="https://www.github.com/jakobzhao/participatory-mapping" target="_blank">here</a>. <i>Last update: June 17, 2023</i></p> 
-    
+        <!-- Introduction to the participatory mapping solution -->
+        <p>
+            This map is a minimum viable solution for participatory mapping.
+            Users can contribute their local knowledge by clicking on the map,
+            submitting their information, and seeing it represented as a red dot.
+            Existing contributions can also be viewed as red dots. While this map offers
+            basic functionality, it can be expanded or repurposed for various participatory
+            mapping projects. Examples include <a href="https://hgis.uw.edu/lgbtqspaces/" target="_blank"><b>Shifting LGBTQ+ spaces</b></a>,
+            <a href="https://hgis.uw.edu/chop"> <b>Archiving the CHOP</b></a> and <a href="https://www.queeringthemap.com/" target="_blank"><b>Queering the Map</b></a>.
+            You can find an instruction on creating a participatory mapping project from
+            <a href="https://www.github.com/jakobzhao/participatory-mapping" target="_blank">here</a>.
+            <i>Last update: June 17, 2023</i>
+        </p> 
     </div>
+    
+    <!-- JavaScript code for the interactive map and data submission -->
     <script>
+        // Variable to hold the popup instance
         let popup = null;
+        
+        // GeoJSON data object to store the contributed points
         let geojson = {
-                'type': 'FeatureCollection',
-                'features': []
-            };
+            'type': 'FeatureCollection',
+            'features': []
+        };
+        
+        // Create a new map instance
         let map = new maplibregl.Map({
             container: 'map', // container id
             style: 'https://api.maptiler.com/maps/dataviz/style.json?key=Cusoe5zmfmn26glFoeoe', // style URL
@@ -77,7 +100,7 @@
             zoom: 12 // starting zoom
         });
 
-
+        // Fetch existing records when the window is loaded
         window.addEventListener("load", async function () {
             let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/get-record', {
                 method: 'GET'
@@ -85,8 +108,8 @@
 
             let data = await response.json();
       
+            // Iterate through the fetched records and add them to the GeoJSON data object
             for (let i = 0; i < data.rows.length; i++) {
-
                 geojson.features.push({
                     'type': 'Feature',
                     'properties': {
@@ -97,14 +120,11 @@
                         'type': 'Point',
                         'coordinates': [data.rows[i].lng, data.rows[i].lat]
                     }
-
                 });
-
             }
-
-
         });
 
+        // After the map loads, add the GeoJSON source and layer for existing points
         map.on("load", function () {
             map.addSource('places', {
                 'type': 'geojson',
@@ -120,73 +140,75 @@
                     'circle-color': '#B42222'
                 }
             });
-
         });
 
-
+        // Show popup on mouse enter over an existing point
         map.on('mouseenter', 'placesLayer', function (e) {
-            // Change the cursor style as a UI indicator.
             map.getCanvas().style.cursor = 'pointer';
 
             var coordinates = e.features[0].geometry.coordinates;
             var content = e.features[0].properties.content;
             var contributor = e.features[0].properties.contributor;
 
-     
             popup = new maplibregl.Popup()
                 .setLngLat(coordinates)
                 .setHTML("<p><b>" + contributor + "</b> <i>said:</i> " + content + "</p>")
                 .addTo(map);
         });
 
+        // Remove popup on mouse leave from an existing point
         map.on('mouseleave', 'placesLayer', function () {
             map.getCanvas().style.cursor = '';
             popup.remove();
         });
 
-
-        
+        // Handle click event on the map to allow user contribution
         map.on('click', function (e) {
-            //close popup if one is already open
             if (popup) {
                 popup.remove();
             }
+
+            // Create the HTML content for the contribution popup
             const popupContent = '<div id="popup"><input type="text" id="name" placeholder="Input your name here..."><input type="text" id="content" placeholder="Input your message here..."><button id="submit">submit</button></div>';
+
+            // Create a new popup and set its content
             popup = new maplibregl.Popup({ closeOnClick: false })
                 .setLngLat(e.lngLat)
                 .setHTML(popupContent)
                 .addTo(map);
 
+            // Attach an event listener to the submit button to handle new record submission
             document.getElementById('submit').addEventListener('click', submitNewRecord);
             e.preventDefault();
-
         });
 
-
-
+        // Function to handle the submission of a new record
         async function submitNewRecord() {
             let contributor = document.getElementById('name').value;
             let content = document.getElementById('content').value;
             let lngLat = popup.getLngLat();
 
+            // Create a new URLSearchParams object and append the data to it
             let newRecord = new URLSearchParams();
             newRecord.append('contributor', contributor);
             newRecord.append('content', content);
             newRecord.append('lng', lngLat.lng);
             newRecord.append('lat', lngLat.lat);
 
-
+            // Set the POST request settings
             let settings = {
                 method: 'POST',
                 body: newRecord
             }
 
             try {
+                // Send the POST request to add the new record
                 await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/add-record', settings);
-                //    confirmationReview();
             } catch (err) {
-                //   checkStatus(err);
+                // Handle any errors that occur during the request
+                console.error(err);
             } finally {
+                // Remove the popup and update the GeoJSON data with the new point
                 popup.remove();
                 geojson.features.push({
                     'type': 'Feature',
@@ -198,14 +220,10 @@
                         'type': 'Point',
                         'coordinates': [lngLat.lng, lngLat.lat]
                     }
-
                 });
                 map.getSource('places').setData(geojson);
-
             }
         }
-
-
     </script>
 
 </body>

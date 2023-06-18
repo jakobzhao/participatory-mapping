@@ -1,15 +1,12 @@
-// All of our routers, and functionalities that we are going to perform
-// add user, delete user, names, etc...
-
+// Import the required module
 const router = require('express-promise-router')();
+
+// Import the productController module
 const productController = require('../controllers/product.controller');
 
-
-// get all record from tblRecord table
+// Define routes for the functionalities
 router.get('/get-record', productController.getRecord);
-
-// create new record
 router.post('/add-record', productController.addRecord);
 
-
+// Export the router module
 module.exports = router;

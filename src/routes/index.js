@@ -1,10 +1,10 @@
-// Index.js allows us to set up our root API function and router.
-
+// Import the required module
 const express = require('express');
-// const path = require('path');
 
+// Create an Express router instance
 const router = express.Router();
 
+// Define a GET route for the '/api' endpoint
 router.get('/api', (req, res) => {
   res.status(200).send({
     success: 'true',
@@ -13,5 +13,5 @@ router.get('/api', (req, res) => {
   });
 });
 
-
+// Export the router module
 module.exports = router;
