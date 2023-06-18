@@ -39,16 +39,11 @@ In the 'Settings' page, scroll down until you see a section called 'Repository n
 
 That's it! You've successfully forked the 'participatory-mapping' repository from jakobzhao's account to your own account, and renamed it to 'my-awesome-map'. From now on, you can access this repository at https://github.com/YourUsername/my-awesome-map, where YourUsername is replaced by your actual GitHub username.
 
-> Once forked and renamed, you can clone the repository to your local machine. To do this, you'll need to have Git installed on your computer. If you don't have Git installed, you can download it from `https://git-scm.com/downloads`. Once Git is installed, you can clone the repository to your local machine.  To do this,  you will need to use either Command Prompt on Windows or Terminal on Mac OS to complete this task. After opening the command prompt or terminal, please navigate to a desired directory for managing your projects using `cd`, like `cd C:\YourDirectory` in command prompt or `cd ~/YourDirectory` in Terminal. Then, clone the forked repository by typing `git clone https://github.com/YourUsername/my-awesome-map.git`
->
-> Once cloned to your local machine, you can edit your repository in your local machine using VS code. Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux, and MacOS. It includes support for debugging, embedded Git control, GitHub, syntax highlighting, intelligent code completion, snippets, and code refactoring. You can download it from the [Visual Studio Code download page](https://code.visualstudio.com/download). To open a repository in Visual Studio Code: please go to `File` -> `Open Folder...` on Windows or `File` -> `Open...` on MacOS, navigate to your cloned repository and open it. Now, you're ready to edit files in the repository.
-
-For the purpose of simplicity in this tutorial, we'll primarily utilize the GitHub web interface for editing the repository. To learn more about how to edit a repository through the web interface, please check out [this tutorial](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github).
 
 
-## 3. Understand the mechanism of the system
+## 3. Understand the system mechanism
 
-To know how the system works, we need to understand the structure of the repository, the functionality of the main files, and the system workflow. 
+To know how the system works, we need to understand the structure of the repository, the functionality of the main files, and the system workflow.
 
 ### 3.1 repository structure
 
@@ -122,7 +117,7 @@ Let's delve into the system workflow step-by-step to understand how this particu
 This workflow illustrates how the system uses a combination of static web hosting (via GitHub Pages), server-side operations (via Heroku and Node.js), and cloud-based database management (via Heroku and PostgreSQL) to provide a dynamic and interactive participatory mapping tool.
 
 
-## 4. Host your project on Heroku
+## 4. Deploy your project on Heroku
 
 To deploy your forked GitHub repository to Heroku, you'll need to follow these step-by-step instructions. Before starting, ensure you have a Heroku account. If you don't have one, sign up for free at https://signup.heroku.com/.
 
@@ -190,14 +185,49 @@ This participatory mapping tool enables the data management through a cloud-base
   
 *  Initialize your Database: In the SQL Query Tool, you can now initialize your database with the provided SQL script. Paste the SQL script in the file `datatable.sql` into the query editor. After pasting the script, click on the "Execute" button (which looks like a "Play" button) to run the script. This will create your table in the database. You have now initialized a table in your PostgreSQL database on Heroku using pgAdmin.
 
-## 6. Publish the map
+## 6. Publish your map
 
-### access the map
+Right now, the forked project is deployed on Heroku and the database is initialized. At this phase, we will walk through the steps to enable you customize it and publish it online.
 
-### switch the basemap
+* Access the map: There are three ways to access the participatory map. 
+  * First, on your heroku dashboard, please navigate to the settings tab, and find the url under the Domains Section. The url is the link to your map. You can also access the map by clicking the "View" button on the top right corner of the dashboard. The url is in the format like https://your-app-name.herokuapp-random-token.com/. For example, the url of the demo map can be accessed through https://participatory-mapping-70cdde6a8df5.herokuapp.com. 
+  * If you feel the heroku url is too long and hard to remember (look at the token!!!), you can also access your map through your-account-name.github.io. On your github repository page, click `settings` and in the general section, scroll down to the GitHub Pages section. You can find the url of your map. Here, please make sure your web map should be built and deployed using the `docs` folder under the `main` branch. Once, save your settings, you should view the map via a url like https://your-account-name.github.io/your-repository-name/. For example, the url of the demo map can be accessed through https://jakobzhao.github.io/participatory-mapping/ . 
+  * If you want to customize the domain name, you can also do it. Please refer to the [GitHub documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages) for more details. Or you can customize it througvh heroku. Please refer to the [Heroku documentation](https://devcenter.heroku.com/articles/custom-domains) for more details.
 
-### collect new data and store them in the database
+* Update the info panel: You can update the information on the info panel in order to provide more details about your map. The info panel is located in the `index.html` file. You can update the title, description, and the image of the info panel.
 
-### update the information on the info panel
+* Switch the basemap: Right now, the base map uses the map tiler's streets-v2 style. You can find a list of map styles from www.maptiler.com. After signing up, you can access the token of each free map style from https://cloud.maptiler.com/maps/ . When you copy the map style, please use the vector style option. You can paste the new map style token to the following code snippet in the `index.html` file.
 
-### new domain name and url
+  ```javascript
+  // Create a new map instance
+  let map = new maplibregl.Map({
+    container: 'map', // container id
+    style: 'https://api.maptiler.com/maps/streets-v2/style.json?key=Cusoe5zmfmn26glFoeoe', // style URL
+    center: [-122.3321, 47.6062], // starting position [lng, lat]
+    pitch: 45, // pitch in degrees
+    zoom: 12 // starting zoom
+  });
+  ```
+  > For more advanced approaches to switching the basemap, you can refer to the [maplibre examples](https://maplibre.org/maplibre-gl-js-docs/example/).
+
+* Collect your data: This minimum viable map only allows you collect the contributor's name, their message, and the location of the message. You can customize the data to be collected by updating your forked repository. Even this project is very straightforward, it still needs to move a few edits across the repository to enable the function. You can edit the repository's code through a IDE on your local machine or GitHub's web editing interface on the cloud. For the purpose of simplicity in this tutorial, we'll primarily utilize the GitHub web interface for editing the repository. To learn more about how to edit a repository through the web interface, please check out [this tutorial](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github). In reality, most web developers prefer Visual Studio Code (VS code). You can follow the steps below to edit the repository through VS code.
+
+  > Once forked and renamed, you can clone the repository to your local machine. To do this, you'll need to have Git installed on your computer. If you don't have Git installed, you can download it from `https://git-scm.com/downloads`. Once Git is installed, you can clone the repository to your local machine.  To do this,  you will need to use either Command Prompt on Windows or Terminal on Mac OS to complete this task. After opening the command prompt or terminal, please navigate to a desired directory for managing your projects using `cd`, like `cd C:\YourDirectory` in command prompt or `cd ~/YourDirectory` in Terminal. Then, clone the forked repository by typing `git clone https://github.com/YourUsername/my-awesome-map.git`
+  >
+  > Once cloned to your local machine, you can edit your repository in your local machine using VS code. Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux, and MacOS. It includes support for debugging, embedded Git control, GitHub, syntax highlighting, intelligent code completion, snippets, and code refactoring. You can download it from the [Visual Studio Code download page](https://code.visualstudio.com/download). To open a repository in Visual Studio Code: please go to `File` -> `Open Folder...` on Windows or `File` -> `Open...` on MacOS, navigate to your cloned repository and open it. Now, you're ready to edit files in the repository.
+
+  * According your data collection plan, you need to edit the data submission in the `index.html` file. For example, you can add a field to collect the contributor's email address. To do so, you will need to include the email text input field in the `popupContent` variable. In the same time, you need to define a css selector to stylize the email input field, and append the collected email value to `newRecord` like `newRecord.append('email', email);`, update each geojson feature to include an property to store the email variable.
+  * Update the `addRecord` method in `src/controllers/product.controller.js` to include the email field. You can refer to the `addRecord` method in the `src/controllers/product.controller.js` file.
+  * Update the data table schema to include the email field using pgAdmin. 
+
+Now, your map is ready to collect your data. You can share the map with your targeting audience and collect their data on the map.
+
+## Final Thoughts
+
+This text provides a detailed, step-by-step tutorial on how to create a minimum viable participatory mapping project using several technical skills and platforms, including HTML, CSS, JavaScript, command line, Node.js, PostgreSQL, GitHub, and Heroku. The author effectively demystifies the process of participatory mapping by explaining concepts and providing actionable instructions.
+
+Participatory mapping, as the author noted, is a crucial tool that empowers local communities to document their knowledge and experiences about their environment, thus supporting decision-making processes. Examples of participatory mapping initiatives given in the text underscore its use for diverse purposes such as natural resource management, land use planning, or advocacy for land rights.
+
+However, the complexity of the tutorial implies that this process is best suited for those with a foundational understanding of the technologies involved. The tutorial may be overwhelming for those without a background in these technologies or novice users. Furthermore, the cost of Heroku services could also be a limiting factor for some.
+
+In conclusion, participatory mapping holds significant potential as a tool for community engagement and representation. Despite some limitations, with careful execution and continuous enhancements, it can serve as an empowering platform that truly reflects the lived experiences of communities. As digital geographers continue to explore this field, we can expect to see more diverse and inclusive mapping projects that capture the myriad ways in which we relate to and experience our environment.
