@@ -158,8 +158,7 @@ Congratulations! You have successfully deployed your forked GitHub repository to
 Remember to regularly check your Heroku app dashboard for logs and potential issues. You can also monitor your app's performance, scale it as needed, and manage other aspects of your deployed application through the Heroku dashboard.
 
 
-
-## 4. Initialize the database
+## 5. Initialize the database
 
 This participatory mapping tool enables the data management through a cloud-based PostgreSQL database that is offered by Heroku. Initializing the database on Heroku involves a few steps. Here is a step-by-step guide on how to do it.
 
@@ -193,8 +192,8 @@ This participatory mapping tool enables the data management through a cloud-base
   
 *  Initialize your Database: In the SQL Query Tool, you can now initialize your database with the provided SQL script. Paste the SQL script in the file `datatable.sql` into the query editor. After pasting the script, click on the "Execute" button (which looks like a "Play" button) to run the script. This will create your table in the database. You have now initialized a table in your PostgreSQL database on Heroku using pgAdmin.
 
+## 6. Publish the map
 
-## 5.  Customize the web map 
 
 ### switch the basemap
 
