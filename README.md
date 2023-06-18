@@ -4,7 +4,9 @@
 
 This is a tutorial to make a minimum viable participatory mapping project. Participatory mapping, also known as community-based mapping, is a general term that refers to the process of creating maps by, for, or with local communities, often in collaboration with specialists. It allows local communities to represent their own perceptions, knowledge, and experiences about their environment. The aim is to produce a map that combines local knowledge with spatial data to support decision-making processes. These maps can be used for a variety of purposes, such as natural resource management, land use planning, or advocacy for land rights.
 
- With this project, users can contribute their local knowledge by clicking on a map, inputting their information, and seeing their input represented as a red dot. Existing contributions can be viewed in a similar manner. While this basic model offers fundamental functionality, it can be tailored or expanded to suit different participatory mapping initiatives. This approach can be particularly beneficial for digital geographers who want to kick-start their own participatory mapping projects. Examples of such initiatives include "Shifting LGBTQ+ Spaces", "Archiving the CHOP", and "Queering the Map".
+ With this project, users can contribute their local knowledge by clicking on a map, inputting their information, and seeing their input represented as a red dot. Existing contributions can be viewed in a similar manner. While this basic model offers fundamental functionality, it can be tailored or expanded to suit different participatory mapping initiatives. This approach can be particularly beneficial for digital geographers who want to kick-start their own participatory mapping projects. Examples of such initiatives include [`Shifting LGBTQ+ Spaces`](https://hgis.uw.edu/lgbtqspaces), [`Archiving the CHOP`](https://hgis.uw.edu/chop/), and [`Queering the Map`](https://www.queeringthemap.com/). You can visit this map via https://jakobzhao.github.io/participatory-mapping/.
+
+![](img/main-screenshot.png)
 
 Here are a few prerequisites to follow this tutorial. You should have:
 
@@ -15,31 +17,24 @@ Here are a few prerequisites to follow this tutorial. You should have:
 
 > If you are not familiar with these topics, you can find many tutorials online. For example, [W3Schools](https://www.w3schools.com/) provides a comprehensive introduction to HTML, CSS, and JavaScript. [The Command Line Crash Course](https://learnpythonthehardway.org/book/appendixa.html) is a good place to start learning the command line. [The Node.js Tutorial](https://www.tutorialspoint.com/nodejs/index.htm) is a good place to start learning Node.js. [The PostgreSQL Tutorial](https://www.postgresqltutorial.com/) is a good place to start learning PostgreSQL. [The  MapLibre GL JS Docs](https://maplibre.org/maplibre-gl-js-docs/api/) is a good place to start learning Leaflet. [The Github Tutorial](https://guides.github.com/activities/hello-world/) is a good place to start learning Github. [The Heroku Tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs) is a good place to start learning Heroku. If you believe you are ready, let's get started!
 
-If you want to learn how the system works, please start with **Step one**, if you just want to build your own participatory mapping project, please start with **Step two**.
-
 
 ## 2. Fork the repository
 
 Certainly! Here's a beginner-friendly tutorial on how to fork the repository at https://github.com/jakobzhao/participatory-mapping under your own account, and rename it to anything you want:
 
-1. Log into your GitHub account.
-Open your web browser and go to GitHub. In the top-right corner of the page, you'll see two options: "Sign in" and "Sign up". If you have an account already, click "Sign in". If you don't, click "Sign up" and follow the instructions to create a new account.
+1. Log into your GitHub account: Open your web browser and go to GitHub. In the top-right corner of the page, you'll see two options: `Sign in` and `Sign up`. If you have an account already, click `Sign in`. If you don't, click `Sign up` and follow the instructions to create a new account.
 
-2. Go to the repository you want to fork.
-In your web browser, navigate to the specific URL of the repository you want to fork, which is https://github.com/jakobzhao/participatory-mapping. You can copy this URL and paste it into your browser's address bar.
+![](img/github-signup.png)
 
-3. Fork the repository.
-In the top-right corner of the page, you'll see a button that says 'Fork'. Click on it. This will create a copy of the repository under your own GitHub account. A "fork" is essentially your own copy of someone else's project, which you can modify and use as you wish without affecting the original project.
+2. Go to the repository you want to fork: In your web browser, navigate to the specific URL of the repository you want to fork, which is https://github.com/jakobzhao/participatory-mapping. You can copy this URL and paste it into your browser's address bar.
 
-4. Confirm the fork.
-You'll be automatically redirected to the new repository under your account. The URL (web address) of this new repository will be something like https://github.com/YourUsername/participatory-mapping, where YourUsername is replaced by your actual GitHub username.
+3. Fork the repository: In the top-right corner of the page, you'll see a button that says 'Fork'. Click on it. This will direct you to a page that help you create a copy of the repository under your own GitHub account. A `fork` is essentially your own copy of someone else's project, which you can modify and use as you wish without affecting the original project.
 
-5. Rename the repository. To rename your new repository, you'll need to go to the repository's 'Settings'. You can find the 'Settings' tab towards the right of the page, on the menu bar that starts with 'Code', 'Pull requests', 'Actions', etc.
-In the 'Settings' page, scroll down until you see a section called 'Repository name'. There, you'll see a text box with the current name of your repository. Click on the text box and erase the current name. Then, type in the new name you want for your repository. Let's say we want to change the name to 'my-awesome-map'. So, type 'my-awesome-map' into the text box. After typing the new name, scroll down a bit and click on the 'Rename' button. A prompt will pop up asking if you're sure you want to rename your repository. Click 'I understand, rename this repository'.
+![](img/fork.png)
 
-That's it! You've successfully forked the 'participatory-mapping' repository from jakobzhao's account to your own account, and renamed it to 'my-awesome-map'. From now on, you can access this repository at https://github.com/YourUsername/my-awesome-map, where YourUsername is replaced by your actual GitHub username.
+4. Create the fork: You can rename your repostory name, For example, you can type 'my-awesome-map' into the text box. From now on, you can access this repository at https://github.com/YourUsername/my-awesome-map, where YourUsername is replaced by your actual GitHub username.
 
-
+![](img/fork-settings.png)
 
 ## 3. Understand the system mechanism
 
@@ -47,7 +42,7 @@ To know how the system works, we need to understand the structure of the reposit
 
 ### 3.1 repository structure
 
-In this step, we will walk through the forked repository and understand the structure of the repository and the function of each file. The structure of the repository and the functions of the contained files are show below:
+In order to comprehend the functioning of the system, it is essential to delve into the repository's structure, familiarize ourselves with the core files' functionalities, and grasp the overall workflow of the system. The structure of the repository and the functions of the contained files are show below:
 
 ```bash
 ├── README.md
@@ -110,7 +105,7 @@ Let's delve into the system workflow step-by-step to understand how this particu
 
 3. **Server-Side Operations:** The server-side of the application, hosted on Heroku, uses Node.js for coding. Heroku, a cloud-based platform, enables developers to build, run, and operate applications. The commands to kickstart the server on Heroku are detailed in the PROCFILE. The files `server.js`, `app.js`, and `routes/*.js` are primarily used to set up the server, create web applications, and establish routes to the services. For example, the code snippet `router.post('/add-record', productController.addRecord)` triggers the `addRecord` function in the `controllers/productController.js` file when the client-side code sends a request via the `/add-record` route.
 
-4. **Web Services:** The server-side code handles client-side requests, processing them to return the appropriate response. These web services can retrieve existing data from the database or store new user-contributed data. For example, the `addRecord` function, defined in `controllers/productController.js`, extracts the contributed data (e.g., contributor, content, lat, lng) and stores them in the database. The code snippet `let {recordRows} = await db.query('INSERT INTO "tblRecord"(contributor, content, lat, lng) VALUES ($1, $2, $3, $4)', [contributor, content, lat, lng])` is used for this purpose.
+4. **Web Services:** The server-side code handles client-side requests, processing them to return the appropriate response. These web services can retrieve existing data from the database or store new user-contributed data. For example, the `addRecord` function, defined in `controllers/productController.js`, extracts the contributed data (e.g., contributor, content, lat, lng) and stores them in the database. The code snippet `let {recordRows} = await db.query('INSERT INTO `tblRecord`(contributor, content, lat, lng) VALUES ($1, $2, $3, $4)', [contributor, content, lat, lng])` is used for this purpose.
 
 5. **Database Operations:** The application uses a PostgreSQL database to store and manage data. This database is cloud-hosted through Heroku. Connection information for this database is provided in the `src/config/database.js` file, ensuring successful execution of the SQL statement in the data query method `db.query()`.
   
@@ -123,80 +118,87 @@ To deploy your forked GitHub repository to Heroku, you'll need to follow these s
 
 * Create a new app on Heroku:
   * Log in to your Heroku account.
-  * On the Heroku dashboard, click the "New" button, then select "Create new app".
-  * Give your app a unique name (e.g., "my-app-name").
+  * On the Heroku dashboard, click the `New` button, then select `Create new app`.
+  * Give your app a unique name (e.g., `my-app-name`).
   * Choose the region closest to your location.
-  * Click the "Create app" button.
+  * Click the `Create app` button.
+
+![](img/heroku-new-app.png)
 
 * Connect the Heroku app to your GitHub repository:
-  * On the "Deploy" tab of your Heroku app dashboard, under "Deployment method", choose "GitHub".
-  * In the "Connect to GitHub" section, search for the repository you forked and click the "Connect" button.
+  * On the `Deploy` tab of your Heroku app dashboard, under `Deployment method`, choose `GitHub`.
+  * In the `Connect to GitHub` section, search for the repository you forked and click the `Connect` button.
 
 * Set up the build command:
-  * In the "Deploy" tab of your Heroku app dashboard, scroll down to the "Manual deploy" section.
-  * Click the "Deploy Branch" button to manually deploy the app for the first time.
-  * In the "Automatic deploys" section, enable automatic deploys if desired.
-  * In the "Manual deploy" section, make sure the correct branch is selected.
-  * Scroll down to the "Buildpacks" section and click on the "Add buildpack" button.
-  * Choose the appropriate buildpack for your application. Since we are deploying a Node.js app, select the "Node.js" buildpack.
-  * Click the "Save changes" button to update the buildpacks.
+  * In the `Deploy` tab of your Heroku app dashboard, scroll down to the `Manual deploy` section.
+  * Click the `Deploy Branch` button to manually deploy the app for the first time.
+  * In the `Automatic deploys` section, enable automatic deploys if desired.
+  * In the `Manual deploy` section, make sure the correct branch is selected.
+  ![](img/heroku-setting-1.png)
+  ![](img/heroku-setting-2.png)
+  * In the `Settings` tab of your Heroku app dashboard, Scroll down to the `Buildpacks` section and click on the `Add buildpack` button.
+  * Choose the appropriate buildpack for your application. Since we are deploying a Node.js app, select the `Node.js` buildpack.
+  * Click the `Save changes` button to update the buildpacks.
 
-* Verify the deployment:
 
-  * Once the deployment is complete, click the "View" button to open your deployed application in a new tab.
-  * Ensure that your application is running as expected.
-
-Congratulations! You have successfully deployed your forked GitHub repository to Heroku. The app is now live and accessible to the public. You can continue making changes to your repository and deploying updates to Heroku using the configured automatic deployment or manually triggering deployments.
-
-Remember to regularly check your Heroku app dashboard for logs and potential issues. You can also monitor your app's performance, scale it as needed, and manage other aspects of your deployed application through the Heroku dashboard.
+Congratulations! You have successfully deployed your forked GitHub repository to Heroku. The app is now live and accessible to the public. You can continue making changes to your repository and deploying updates to Heroku using the configured automatic deployment or manually triggering deployments. Remember to regularly check your Heroku app dashboard for logs and potential issues. You can also monitor your app's performance, scale it as needed, and manage other aspects of your deployed application through the Heroku dashboard.
 
 
 ## 5. Initialize the database
 
 This participatory mapping tool enables the data management through a cloud-based PostgreSQL database that is offered by Heroku. Initializing the database on Heroku involves a few steps. Here is a step-by-step guide on how to do it.
 
-* Create a Heroku Account: If you don't have a Heroku account, go to https://www.heroku.com/ and sign up.
-
-* Create a new Heroku app: After logging into your account, in the dashboard, click on "New" at the top right corner and then "Create new app". Enter your app name and choose a region, then click "Create app".
-
-* Add a PostgreSQL add-on: In your app dashboard, click on the "Overview" tab. Under the "Installed add-ons" section, click on "Configure Add-ons". In the "Add-ons" search bar, type "Heroku Postgres" and select it. Choose the plan you want (there is a free one available) and then click "Provision".
+* Add a PostgreSQL add-on: In your Heorku app dashboard, click on the `Overview` tab. Under the `Installed add-ons` section, click on `Configure Add-ons`. In the `Add-ons` search bar, type `Heroku Postgres` and select it. FOr testing purpose, the mini plan costing $5 per moth is enough.
 
 * Retrieve the Database URL: After adding the PostgreSQL add-on to your app, you need to retrieve the database URL. Here are the steps:
-  * Click on the "Heroku Postgres" add-on under the "Resources" tab. This will take you to the Heroku Postgres dashboard.
-  * In the Heroku Postgres dashboard, click on the "Settings" tab.
-  * Click on the "View Credentials" button. This will display the credentials for your PostgreSQL database, including the database URL.
+  * Click on the `Heroku Postgres` add-on under the `Resources` tab. This will take you to the Heroku Postgres dashboard.
+  * In the Heroku Postgres dashboard, click on the `Settings` tab.
+  * Click on the `View Credentials` button. This will display the credentials for your PostgreSQL database, including the database URL.
 
-* Connect to your Database: To connect to the database, you can use any PostgreSQL client, such as `pgAdmin`. You need to have pgAdmin installed on your machine. If you don't have it yet, you can download it from the official pgAdmin website. The installation process may vary depending on your operating system. 
+![](img/database-credentials.png)
+
+* Connect to your Database: To connect to the database, you can use any PostgreSQL client, such as `pgAdmin`. You need to have pgAdmin installed on your machine. If you don't have it yet, you can download it from the official pgAdmin website. The installation process may vary depending on your operating system.
 
 * After installing pgAdmin, open it. You will see the pgAdmin dashboard. In pgAdmin, servers are essentially connections to databases. To create a new server:
-  * Right-click on the "Servers" in the left panel and choose "Create > Server...". 
-  * In the "Create - Server" dialog box, enter a name for the server under the "General" tab. This can be any name you like and doesn't affect the connection.
-  * Click on the "Connection" tab. Here, you will enter the details of your Heroku Postgres database. These details can be found from the "View Credentials" section of your database in the Heroku dashboard.
-     > - Host: This is the "Host" value in Heroku credentials.
-     > - Port: This is the "Port" value in Heroku credentials.
-     > - Maintenance database: This is the "Database" value in Heroku credentials.
-     > - Username: This is the "User" value in Heroku credentials.
-     > - Password: This is the "Password" value in Heroku credentials.
-  * After entering these details, click "Save".
+  * Right-click on the `Servers` in the left panel and choose `Register > Server...`. 
+  * In the `Register - Server` dialog box, enter a name for the server under the `General` tab. This can be any name you like and doesn't affect the connection.
+  * Click on the `Connection` tab. Here, you will enter the details of your Heroku Postgres database. These details can be found from the `View Credentials` section of your database in the Heroku dashboard.
+     > - `Host`: This is the `Host` value in Heroku credentials.
+     > - `Port`: This is the `Port` value in Heroku credentials.
+     > - `Maintenance database`: This is the `Database` value in Heroku credentials.
+     > - `Username`: This is the `User` value in Heroku credentials.
+     > - `Password`: This is the `Password` value in Heroku credentials.
+  * After entering these details, click `Save`.
+
+![](img/pgadmin.png)
+
+* Connect to the Database: After creating the server, you can connect to your database. In the left panel, navigate to `Servers > [Your Server Name] > Databases > [Your Database Name]`. Double-click on your database name to connect to it.
   
-* Connect to the Database: After creating the server, you can connect to your database. In the left panel, navigate to "Servers > [Your Server Name] > Databases > [Your Database Name]". Double-click on your database name to connect to it.
+* Open SQL Query Tool: After connecting to your database, you can open the SQL Query Tool. Right-click on your database name and choose `Query Tool`. This will open a new SQL Query Tool tab.
   
-* Open SQL Query Tool: After connecting to your database, you can open the SQL Query Tool. Right-click on your database name and choose "Query Tool". This will open a new SQL Query Tool tab.
-  
-*  Initialize your Database: In the SQL Query Tool, you can now initialize your database with the provided SQL script. Paste the SQL script in the file `datatable.sql` into the query editor. After pasting the script, click on the "Execute" button (which looks like a "Play" button) to run the script. This will create your table in the database. You have now initialized a table in your PostgreSQL database on Heroku using pgAdmin.
+*  Initialize your Database: In the SQL Query Tool, you can now initialize your database with the provided SQL script. Paste the SQL script in the file `datatable.sql` into the query editor. After pasting the script, click on the `Execute` button (which looks like a `Play` button) to run the script. This will create your table in the database. You have now initialized a table in your PostgreSQL database on Heroku using pgAdmin.
 
 ## 6. Publish your map
 
-Right now, the forked project is deployed on Heroku and the database is initialized. At this phase, we will walk through the steps to enable you customize it and publish it online.
+Currently, the forked project is successfully deployed on Heroku, and the database is initialized. In this phase, we will guide you through the steps to customize the project and publish it online.
 
-* Access the map: There are three ways to access the participatory map. 
-  * First, on your heroku dashboard, please navigate to the settings tab, and find the url under the Domains Section. The url is the link to your map. You can also access the map by clicking the "View" button on the top right corner of the dashboard. The url is in the format like https://your-app-name.herokuapp-random-token.com/. For example, the url of the demo map can be accessed through https://participatory-mapping-70cdde6a8df5.herokuapp.com. 
-  * If you feel the heroku url is too long and hard to remember (look at the token!!!), you can also access your map through your-account-name.github.io. On your github repository page, click `settings` and in the general section, scroll down to the GitHub Pages section. You can find the url of your map. Here, please make sure your web map should be built and deployed using the `docs` folder under the `main` branch. Once, save your settings, you should view the map via a url like https://your-account-name.github.io/your-repository-name/. For example, the url of the demo map can be accessed through https://jakobzhao.github.io/participatory-mapping/ . 
-  * If you want to customize the domain name, you can also do it. Please refer to the [GitHub documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages) for more details. Or you can customize it througvh heroku. Please refer to the [Heroku documentation](https://devcenter.heroku.com/articles/custom-domains) for more details.
+* Access the map:
+  * Method 1: On your Heroku dashboard, go to the `Settings` tab and find the URL under the `Domains` section. This URL serves as the direct link to your map. Additionally, you can access the map by clicking the `View` button located at the top right corner of the dashboard. The URL follows a format like https://your-app-name.herokuapp-random-token.com/. For example, you can access the demo map using the URL https://participatory-mapping-70cdde6a8df5.herokuapp.com.
+  * Method 2: If you find the Heroku URL lengthy and difficult to remember (due to the random token), you have another option. You can access your map through your-account-name.github.io. To do this, visit your GitHub repository page, navigate to `Settings`, and scroll down to the `GitHub Pages` section under the `General` tab. Here, you will find the URL for your map. Please ensure that your web map is built and deployed using the docs folder in the main branch. After saving your settings, your map will be accessible via a URL like https://your-account-name.github.io/your-repository-name/. For example, the demo map can be accessed through the URL https://jakobzhao.github.io/participatory-mapping/.
+  * Method 3: If you wish to customize the domain name further, you have options available. Please refer to the [GitHub documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages) for more details. for detailed instructions on customizing the domain name. Alternatively, you can customize the domain through Heroku. For more information, consult the [Heroku documentation](https://devcenter.heroku.com/articles/custom-domains).
 
-* Update the info panel: You can update the information on the info panel in order to provide more details about your map. The info panel is located in the `index.html` file. You can update the title, description, and the image of the info panel.
+* Updating the Info Panel:
 
-* Switch the basemap: Right now, the base map uses the map tiler's streets-v2 style. You can find a list of map styles from www.maptiler.com. After signing up, you can access the token of each free map style from https://cloud.maptiler.com/maps/ . When you copy the map style, please use the vector style option. You can paste the new map style token to the following code snippet in the `index.html` file.
+  * To provide additional details about your map or introduce your own participatory map, you can update the information displayed in the info panel. This panel is located in the index.html file.
+  * Open the index.html file and locate the section containing the title, description, and image of the info panel.
+  * Modify the title, description, and image to reflect the desired information you want to present.
+
+* Switching the Basemap:
+  * Currently, the base map utilizes MapTiler's streets-v2 style. If you prefer a different style, you can explore the available map styles at www.maptiler.com.
+  * Sign up for MapTiler to access the token for each free map style at https://cloud.maptiler.com/maps/.
+  * When copying the map style, ensure you select the vector style option.
+  * In the index.html file, locate the code snippet responsible for setting the basemap.
+  * Replace the existing map style token with the newly copied token. This update will switch the basemap to the desired style.
 
   ```javascript
   // Create a new map instance
@@ -210,15 +212,25 @@ Right now, the forked project is deployed on Heroku and the database is initiali
   ```
   > For more advanced approaches to switching the basemap, you can refer to the [maplibre examples](https://maplibre.org/maplibre-gl-js-docs/example/).
 
-* Collect your data: This minimum viable map only allows you collect the contributor's name, their message, and the location of the message. You can customize the data to be collected by updating your forked repository. Even this project is very straightforward, it still needs to move a few edits across the repository to enable the function. You can edit the repository's code through a IDE on your local machine or GitHub's web editing interface on the cloud. For the purpose of simplicity in this tutorial, we'll primarily utilize the GitHub web interface for editing the repository. To learn more about how to edit a repository through the web interface, please check out [this tutorial](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github). In reality, most web developers prefer Visual Studio Code (VS code). You can follow the steps below to edit the repository through VS code.
+* Collect your data: This minimum viable map only allows you collect the contributor's name, their message, and the location of the message. You can customize your forked repository to collect your own dataset. A few edits across the repository are required to enable its functionality. You have the option to edit the repository's code using an Integrated Development Environment (IDE) on your local machine or GitHub's web editing interface on the cloud. To learn more about how to edit a repository through the web interface, please check out [this tutorial](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github). In this tutorial, we will primarily focus on editing the repository through GitHub's web interface for simplicity. If you prefer using an IDE, most web developers recommend Visual Studio Code (VS Code). You can follow the steps below to edit the repository using VS Code.
 
   > Once forked and renamed, you can clone the repository to your local machine. To do this, you'll need to have Git installed on your computer. If you don't have Git installed, you can download it from `https://git-scm.com/downloads`. Once Git is installed, you can clone the repository to your local machine.  To do this,  you will need to use either Command Prompt on Windows or Terminal on Mac OS to complete this task. After opening the command prompt or terminal, please navigate to a desired directory for managing your projects using `cd`, like `cd C:\YourDirectory` in command prompt or `cd ~/YourDirectory` in Terminal. Then, clone the forked repository by typing `git clone https://github.com/YourUsername/my-awesome-map.git`
   >
   > Once cloned to your local machine, you can edit your repository in your local machine using VS code. Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux, and MacOS. It includes support for debugging, embedded Git control, GitHub, syntax highlighting, intelligent code completion, snippets, and code refactoring. You can download it from the [Visual Studio Code download page](https://code.visualstudio.com/download). To open a repository in Visual Studio Code: please go to `File` -> `Open Folder...` on Windows or `File` -> `Open...` on MacOS, navigate to your cloned repository and open it. Now, you're ready to edit files in the repository.
 
-  * According your data collection plan, you need to edit the data submission in the `index.html` file. For example, you can add a field to collect the contributor's email address. To do so, you will need to include the email text input field in the `popupContent` variable. In the same time, you need to define a css selector to stylize the email input field, and append the collected email value to `newRecord` like `newRecord.append('email', email);`, update each geojson feature to include an property to store the email variable.
-  * Update the `addRecord` method in `src/controllers/product.controller.js` to include the email field. You can refer to the `addRecord` method in the `src/controllers/product.controller.js` file.
-  * Update the data table schema to include the email field using pgAdmin. 
+  * Customize Data Submission:
+    * Based on your data collection plan, you need to edit the data submission process in the index.html file. For example, you can add a field to collect the contributor's email address. To do this, include an email text input field in the popupContent variable.
+    * Define a CSS selector to stylize the email input field.
+    * Append the collected email value to newRecord using newRecord.append('email', email);.
+    * Update each geojson feature to include a property to store the email variable.
+  * Update the addRecord Method:
+    * Navigate to the src/controllers/product.controller.js file.
+    * Update the addRecord method to include the email field.
+    * You can refer to the existing addRecord method in the file as a reference.
+  * Update the Data Table Schema:
+    * Use pgAdmin (PostgreSQL administration and management tool) to access the data table schema.
+    * Update the schema to include the email field.
+
 
 Now, your map is ready to collect your data. You can share the map with your targeting audience and collect their data on the map.
 
@@ -230,4 +242,4 @@ Participatory mapping, as the author noted, is a crucial tool that empowers loca
 
 However, the complexity of the tutorial implies that this process is best suited for those with a foundational understanding of the technologies involved. The tutorial may be overwhelming for those without a background in these technologies or novice users. Furthermore, the cost of Heroku services could also be a limiting factor for some.
 
-In conclusion, participatory mapping holds significant potential as a tool for community engagement and representation. Despite some limitations, with careful execution and continuous enhancements, it can serve as an empowering platform that truly reflects the lived experiences of communities. As digital geographers continue to explore this field, we can expect to see more diverse and inclusive mapping projects that capture the myriad ways in which we relate to and experience our environment.
+In conclusion, participatory mapping holds significant potential as a tool for community engagement and representation. Despite some limitations, with careful execution and continuous enhancements, it can serve as an empowering platform that truly reflects the lived experiences of communities. As digital geographers continue to explore this field, we can expect to see more diverse and inclusive mapping projects that capture the myriad ways in which we relate to and experience our environment. 
