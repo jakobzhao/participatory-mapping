@@ -6,6 +6,6 @@ This is a minimum viable participatory mapping project. Users can contribute the
 
 - A basic understanding of HTML, CSS, and JavaScript,
 - A basic understanding of the command line, Node.js, and PostgreSQL database,
-- Some open source mapping experience, and
+- Some open source web mapping experience, and
 - A github account, a heroku account, and be willing to pay $20 for the heroku service.
 
