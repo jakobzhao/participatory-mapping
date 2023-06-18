@@ -1,6 +1,6 @@
 # A Minimum Viable Participatory Mapping
 
-**Bo Zhao | Department of Geography, University of Washington | June 17th, 2023**
+**Bo Zhao | Department of Geography |  University of Washington | June 17th, 2023**
 
 This is a tutorial to make a minimum viable participatory mapping project. Participatory mapping, also known as community-based mapping, is a general term that refers to the process of creating maps by, for, or with local communities, often in collaboration with specialists. It allows local communities to represent their own perceptions, knowledge, and experiences about their environment. The aim is to produce a map that combines local knowledge with spatial data to support decision-making processes. These maps can be used for a variety of purposes, such as natural resource management, land use planning, or advocacy for land rights.
 
@@ -40,7 +40,7 @@ In the 'Settings' page, scroll down until you see a section called 'Repository n
 That's it! You've successfully forked the 'participatory-mapping' repository from jakobzhao's account to your own account, and renamed it to 'my-awesome-map'. From now on, you can access this repository at https://github.com/YourUsername/my-awesome-map, where YourUsername is replaced by your actual GitHub username.
 
 > Once forked and renamed, you can clone the repository to your local machine. To do this, you'll need to have Git installed on your computer. If you don't have Git installed, you can download it from `https://git-scm.com/downloads`. Once Git is installed, you can clone the repository to your local machine.  To do this,  you will need to use either Command Prompt on Windows or Terminal on Mac OS to complete this task. After opening the command prompt or terminal, please navigate to a desired directory for managing your projects using `cd`, like `cd C:\YourDirectory` in command prompt or `cd ~/YourDirectory` in Terminal. Then, clone the forked repository by typing `git clone https://github.com/YourUsername/my-awesome-map.git`
-
+>
 > Once cloned to your local machine, you can edit your repository in your local machine using VS code. Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux, and MacOS. It includes support for debugging, embedded Git control, GitHub, syntax highlighting, intelligent code completion, snippets, and code refactoring. You can download it from the [Visual Studio Code download page](https://code.visualstudio.com/download). To open a repository in Visual Studio Code: please go to `File` -> `Open Folder...` on Windows or `File` -> `Open...` on MacOS, navigate to your cloned repository and open it. Now, you're ready to edit files in the repository.
 
 For the purpose of simplicity in this tutorial, we'll primarily utilize the GitHub web interface for editing the repository. To learn more about how to edit a repository through the web interface, please check out [this tutorial](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github).
