@@ -4,7 +4,7 @@ const app = express();
 const index = require('./routes/index');
 const userRoute = require('./routes/product.routes');
 let corsOptions = {
-    origin: ['https://localhost:3000', 'https://www.github.io'],
+    origin: ['https://localhost', 'https://www.github.io'],
     optionsSuccessStatus: 200
 }
 // , 'https://jakobzhao.github.io','http://jakobzhao.github.io'
