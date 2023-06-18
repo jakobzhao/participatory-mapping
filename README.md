@@ -2,7 +2,7 @@
 ### Bo Zhao | Department of Geography, University of Washington
 ### June 17th, 2023 
 
-## Introduction
+## 1. Introduction
 
 This is a tutorial to make a minimum viable participatory mapping project. Participatory mapping, also known as community-based mapping, is a general term that refers to the process of creating maps by, for, or with local communities, often in collaboration with specialists. It allows local communities to represent their own perceptions, knowledge, and experiences about their environment. The aim is to produce a map that combines local knowledge with spatial data to support decision-making processes. These maps can be used for a variety of purposes, such as natural resource management, land use planning, or advocacy for land rights.
 
@@ -20,47 +20,95 @@ If you are not familiar with these topics, you can find many tutorials online. F
 If you want to learn how the system works, please start with **Step one**, if you just want to build your own participatory mapping project, please start with **Step two**.
 
 
-## fork the participatory mapping project to your own github account
+## 2. Fork the repository
+
+Certainly! Here's a beginner-friendly tutorial on how to fork the repository at https://github.com/jakobzhao/participatory-mapping under your own account, and rename it to anything you want:
+
+1.	Log into your GitHub account.
+Open your web browser and go to GitHub. In the top-right corner of the page, you'll see two options: "Sign in" and "Sign up". If you have an account already, click "Sign in". If you don't, click "Sign up" and follow the instructions to create a new account.
+
+2.	Go to the repository you want to fork.
+In your web browser, navigate to the specific URL of the repository you want to fork, which is https://github.com/jakobzhao/participatory-mapping. You can copy this URL and paste it into your browser's address bar.
+
+3.	Fork the repository.
+In the top-right corner of the page, you'll see a button that says 'Fork'. Click on it. This will create a copy of the repository under your own GitHub account. A "fork" is essentially your own copy of someone else's project, which you can modify and use as you wish without affecting the original project.
+
+4.	Confirm the fork.
+You'll be automatically redirected to the new repository under your account. The URL (web address) of this new repository will be something like https://github.com/YourUsername/participatory-mapping, where YourUsername is replaced by your actual GitHub username.
+
+5.	Rename the repository. To rename your new repository, you'll need to go to the repository's 'Settings'. You can find the 'Settings' tab towards the right of the page, on the menu bar that starts with 'Code', 'Pull requests', 'Actions', etc.
+In the 'Settings' page, scroll down until you see a section called 'Repository name'. There, you'll see a text box with the current name of your repository. Click on the text box and erase the current name. Then, type in the new name you want for your repository. Let's say we want to change the name to 'my-awesome-map'. So, type 'my-awesome-map' into the text box. After typing the new name, scroll down a bit and click on the 'Rename' button. A prompt will pop up asking if you're sure you want to rename your repository. Click 'I understand, rename this repository'.
+
+That's it! You've successfully forked the 'participatory-mapping' repository from jakobzhao's account to your own account, and renamed it to 'my-awesome-map'. From now on, you can access this repository at https://github.com/YourUsername/my-awesome-map, where YourUsername is replaced by your actual GitHub username.
+
+> Once forked and renamed, you can clone the repository to your local machine. To do this, you'll need to have Git installed on your computer. If you don't have Git installed, you can download it from `https://git-scm.com/downloads`. Once Git is installed, you can clone the repository to your local machine.  To do this,  you will need to use either Command Prompt on Windows or Terminal on Mac OS to complete this task. After opening the command prompt or terminal, please navigate to a desired directory for managing your projects using `cd`, like `cd C:\YourDirectory` in command prompt or `cd ~/YourDirectory` in Terminal. Then, clone the forked repository by typing `git clone https://github.com/YourUsername/my-awesome-map.git`
+
+> Once cloned to your local machine, you can edit your repository in your local machine using VS code. Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux, and MacOS. It includes support for debugging, embedded Git control, GitHub, syntax highlighting, intelligent code completion, snippets, and code refactoring. You can download it from the [Visual Studio Code download page](https://code.visualstudio.com/download). To open a repository in Visual Studio Code: please go to `File` -> `Open Folder...` on Windows or `File` -> `Open...` on MacOS, navigate to your cloned repository and open it. Now, you're ready to edit files in the repository.
+
+For the purpose of simplicity in this tutorial, we'll primarily utilize the GitHub web interface for editing the repository. To learn more about how to edit a repository through the web interface, please check out [this tutorial](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github).
 
 
-## Clone the forked repository to your local machine
+## 3. Understand the functions
 
-## Open the repository in VS Code.
+In this step, we will walk through the forked repository and understand the structure of the repository and the function of each file. The structure of the repository is show below:
 
-##
+```bash
+├── README.md
+├── docs
+│   ├── index.html
+├── src
+│   ├── config
+│   ├── controllers
+│   ├── routes
+│   ├── app.js
+├── node_modules
+│   ├── ...
+├── server.js
+├── package.json
+├── database.sql
+├── package.json
+├── package-lock.json
+├── PROCFILE
+```
+
+The function of each file is listed below:
+
+• `docs`: This is usually a folder where documentation files are stored. It might contain additional information about how to use the software, the design decisions that were made during its development, or any other kind of information that might be helpful to users or developers. 
+
+• `node_modules`: This is a folder where Node.js modules (or packages) are stored. When you use Node.js and install packages using the Node Package Manager (npm), those packages are placed in this folder.
+
+• `src`: This is typically where the source code of the application is stored. For a Node.js application, this would usually contain JavaScript files.
+
+• `PROCFILE`: A Procfile is a mechanism for declaring what commands are run by your application's dynos on the Heroku platform. It is used to explicitly declare what command should be executed to start your app.
+
+• `README.md`: This is a markdown file that usually contains information about the software, such as what it does, how to install it, how to use it, and sometimes, how to contribute to it. It's the first thing people see when they visit the repository on GitHub.
+
+• `datatable.sql`: This appears to be an SQL file, which typically contains SQL commands for interacting with a database. This could be creating tables, inserting data, querying data, etc. In this case, it is likely used to set up the database structure for the participatory mapping application.
+
+• `package-lock.json`: This is an automatically generated file by npm, which is used to keep track of the exact version of every package that is installed. This helps to ensure that the dependencies remain the same on all machines the project is installed on.
+
+• `package.json`: This file is used in Node.js projects to keep track of all the packages (dependencies) that your project uses. This includes things like libraries and frameworks that your project depends on. It can also contain other metadata such as the project's name, description, and version.
+
+• `server.js`: This is likely the main entry point for the application. In a Node.js application, this file usually sets up the server and starts it, often setting up routes for a web server and other server configuration1.
+
+
+## 3. Host your project on Heroku
+
+the project on Heroku
+
+Grant Heroku access to external accounts for additional functionality.
+
+
+## 4. Initialize the database
 
 
 
+## 5.  Customize the web map 
 
-## Step 1: Create a Github Repository
+### switch the basemap
 
-Above all, you will need a github repository to manage your project. Before you start, you need a GitHub account. If you don't have one, go to https://github.com/ and sign up for a new account.
+### collect new data and store them in the database
 
-Here is a step-by-step guide to creating a new repository named "participatory-mapping" on GitHub:
+### update the information on the info panel
 
-1.	Log into your GitHub account. Go to https://github.com/ and enter your username (or email address) and password.
-
-2.	Create a new repository. On the upper-right corner of the screen, next to your avatar or identicon, click the '+' icon and select "New repository".
-
-3.	Name your repository. Enter the name of your repository as "participatory-mapping". Remember, repository names should be short and memorable. You can choose to make your repository either public or private.
-
-4.	Provide a description. In the "Description" box, you can write a short description of your project. For example, "This repository is for a participatory mapping project".
-
-5.	Initialize your repository. If you want to start with a README file (which you should, it's a good practice to have documentation), tick the checkbox that says "Initialize this repository with a README". This file is a form of documentation. It's where you can provide an extensive description of the project, installation steps, usage, contribution guidelines, and more. Markdown language is used to style and format these files.
-
-6.	Add a license and .gitignore (Optional). Adding a license is a good practice because it tells others how they can legally use your project. If you want to add a license, click on "Add a license" and choose the one you prefer. If you know there are specific files that you want Git to ignore when it's tracking changes, you can add a .gitignore file. Click on "Add .gitignore" and select the programming language, or the type of files you want to ignore.
-
-7.	Create repository. Once everything is filled in, click on "Create repository" at the bottom of the page.
-Congratulations! You now have a new GitHub repository named "participatory-mapping". You can start adding files, collaborating with others, and managing your new project.
-
-## Step 2: 
-
-## Step 2: Create a Heroku App
-
-
-## Step 3: Create a PostgreSQL Database on heroku
-
-## Step 4: Create a Node.js App
-
-## Step 5: Create a Maplibre Map
-
+### new domain name and url

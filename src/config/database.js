@@ -1,5 +1,4 @@
 // This document provides the connection to the database!
-
 const { Pool } = require('pg');
 
 const pool = new Pool({
