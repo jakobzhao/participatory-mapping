@@ -1,4 +1,4 @@
-# Crafting Your Own Participatory Mapping Project: A Guide
+# Creating Your Own Participatory Mapping Project: A Guide
 
 Bo Zhao | Department of Geography |  University of Washington
 
