@@ -1,26 +1,29 @@
 # A Minimum Viable Participatory Mapping
 
-**Bo Zhao | Department of Geography |  University of Washington | June 17th, 2023**
+Bo Zhao | Department of Geography |  University of Washington
 
-This is a tutorial to make a minimum viable participatory mapping project. Participatory mapping, also known as community-based mapping, is a general term that refers to the process of creating maps by, for, or with local communities, often in collaboration with specialists. It allows local communities to represent their own perceptions, knowledge, and experiences about their environment. The aim is to produce a map that combines local knowledge with spatial data to support decision-making processes. These maps can be used for a variety of purposes, such as natural resource management, land use planning, or advocacy for land rights.
+***First release:*** June 17th, 2023 | ***Last Update:*** June 23th, 2023
 
- With this project, users can contribute their local knowledge by clicking on a map, inputting their information, and seeing their input represented as a red dot. Existing contributions can be viewed in a similar manner. While this basic model offers fundamental functionality, it can be tailored or expanded to suit different participatory mapping initiatives. This approach can be particularly beneficial for digital geographers who want to kick-start their own participatory mapping projects. Examples of such initiatives include [`Shifting LGBTQ+ Spaces`](https://hgis.uw.edu/lgbtqspaces), [`Archiving the CHOP`](https://hgis.uw.edu/chop/), and [`Queering the Map`](https://www.queeringthemap.com/). You can visit this map via https://jakobzhao.github.io/participatory-mapping/.
+Participatory mapping, also known as community-based mapping, is a general term that refers to the process of creating maps by, for, or with local communities. It allows local communities to represent their own perceptions, knowledge, and experiences about their environment. These maps can be used for a variety of purposes, such as natural resource management, land use planning, advocacy for land rights, counter-mapping, etc. Examples include [`Shifting LGBTQ+ Spaces`](https://hgis.uw.edu/lgbtqspaces), [`Archiving the CHOP`](https://hgis.uw.edu/chop/), and [`Queering the Map`](https://www.queeringthemap.com/).
+
+This tutorial helps geographers to create their own participatory mapping project. It offers a map demo (https://jakobzhao.github.io/participatory-mapping/, see figure 1) and a detailed instruction on how to create it. This map demo  enables its users to contribute their local knowledge by clicking on a map, inputting their information, and viewing their input represented as a red dot. Existing contributions can also be viewed in a similar manner on the map. While this minimum viable map only offers essential functionality, it can be tailored or expanded to suit different participatory mapping initiatives. This approach can be particularly beneficial for digital geographers who want to kick-start their own participatory mapping projects.
 
 ![](img/main-screenshot.png)
 
-Here are a few prerequisites to follow this tutorial. You should have:
+> **Figure 1.** the screenshot of the minimum viable participatory mapping tool
+
+Here are a few prerequisites to follow this tutorial. **Again, you do not need to be an expert, but you should be able to follow the instructions in this tutorial.** You should have:
 
 - A basic understanding of HTML, CSS, and JavaScript,
-- Familiarity with the command line, Node.js, and the PostgreSQL database,
+- Familiarity with the command line, Node.js, and the PostgreSQL database
 - Some experience with open source web mapping, and
 - Accounts on Github and Heroku, and be willing to pay $20 for the Heroku service.
 
 > If you are not familiar with these topics, you can find many tutorials online. For example, [W3Schools](https://www.w3schools.com/) provides a comprehensive introduction to HTML, CSS, and JavaScript. [The Command Line Crash Course](https://learnpythonthehardway.org/book/appendixa.html) is a good place to start learning the command line. [The Node.js Tutorial](https://www.tutorialspoint.com/nodejs/index.htm) is a good place to start learning Node.js. [The PostgreSQL Tutorial](https://www.postgresqltutorial.com/) is a good place to start learning PostgreSQL. [The  MapLibre GL JS Docs](https://maplibre.org/maplibre-gl-js-docs/api/) is a good place to start learning Leaflet. [The Github Tutorial](https://guides.github.com/activities/hello-world/) is a good place to start learning Github. [The Heroku Tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs) is a good place to start learning Heroku. If you believe you are ready, let's get started!
 
-
 ## 2. Fork the repository
 
-Certainly! Here's a beginner-friendly tutorial on how to fork the repository at https://github.com/jakobzhao/participatory-mapping under your own account, and rename it to anything you want:
+Here's a beginner-friendly overview on how to fork the repository at https://github.com/jakobzhao/participatory-mapping under your own account, and rename it to anything you want. This is the first step to create your own participatory mapping project.
 
 1. Log into your GitHub account: Open your web browser and go to GitHub. In the top-right corner of the page, you'll see two options: `Sign in` and `Sign up`. If you have an account already, click `Sign in`. If you don't, click `Sign up` and follow the instructions to create a new account.
 
@@ -32,7 +35,7 @@ Certainly! Here's a beginner-friendly tutorial on how to fork the repository at 
 
 ![](img/fork.png)
 
-4. Create the fork: You can rename your repostory name, For example, you can type 'my-awesome-map' into the text box. From now on, you can access this repository at https://github.com/YourUsername/my-awesome-map, where YourUsername is replaced by your actual GitHub username.
+4. Create the fork: You can rename your repository name, For example, you can type 'my-awesome-map' into the text box. From now on, you can access this repository at https://github.com/YourUsername/my-awesome-map, where YourUsername is replaced by your actual GitHub username.
 
 ![](img/fork-settings.png)
 
@@ -45,10 +48,10 @@ To know how the system works, we need to understand the structure of the reposit
 In order to comprehend the functioning of the system, it is essential to delve into the repository's structure, familiarize ourselves with the core files' functionalities, and grasp the overall workflow of the system. The structure of the repository and the functions of the contained files are show below:
 
 ```bash
-├── README.md
-├── docs
+├── README.md                    // project instruction
+├── docs                         // the web client
 │   ├── index.html
-├── src
+├── src                          // the web server
 │   ├── config
 │       ├── database.js
 │   ├── controllers
@@ -57,23 +60,23 @@ In order to comprehend the functioning of the system, it is essential to delve i
 │       ├── index.js
 │       ├── product.routes.js
 │   ├── app.js
-├── node_modules
+├── node_modules                 // server-side dependencies
 │   ├── ...
-├── server.js
-├── package.json
-├── database.sql
-├── package.json
-├── package-lock.json
-├── PROCFILE
+├── server.js                    // the main server file
+├── package.json                 // the configuration file
+├── database.sql                 // the database schema
+├── package.json                 // the config file (automatically generated)
+├── package-lock.json            // the config file (automatically generated)
+├── PROCFILE                     // the config file for Heroku
 ```
 
-* `docs`: This is a folder where the static files are stored. As a minimum viable solution, it only has one file `index.html`, but you can contain additional files to enrich your own project.
+* `docs`: This is a folder where the static files are stored. As a minimum viable solution, it only has one file `index.html`, but you can contain additional files to enrich your own project. In our project, this is the location where the web client is stored.
     
   * `docs/index.html`: serves as the main HTML document for the web application, which is a participatory mapping tool.
 
-* `node_modules`: This is a folder where Node.js modules (or packages) are stored. When you use Node.js and install packages using the Node Package Manager (npm), those packages are placed in this folder.
+* `node_modules`: This is a folder where Node.js modules (or packages) are stored. When you use Node.js and install packages using the Node Package Manager (npm), those packages are placed in this folder. Node modules will build up the server and deal with a lot of the back-end functionality that you do not need to worry about.
 
-* `src`: This is typically where the source code of the application is stored. For a Node.js application, this would usually contain JavaScript files.
+* `src`: This is typically where the source code of the application is stored. For a Node.js application, this would usually contain JavaScript files. From a web gis system perspective, this is the location where the server is stored.
     
   * `src/config`: This is a folder where the configuration files are stored. In this case, it contains a file called `database.js`, which is used to configure the database connection. within this folder, `database.js` is used to configure the database connection. It contains the database connection parameters, such as the host, user, password, and database name.
 
@@ -97,9 +100,11 @@ In order to comprehend the functioning of the system, it is essential to delve i
 
 ### 3.2 system workflow
 
+This workflow illustrates how the system uses a combination of static web hosting (via GitHub Pages), server-side operations (via Heroku and Node.js), and cloud-based database management (via Heroku and PostgreSQL) to provide a dynamic and interactive participatory mapping tool.
+
 Let's delve into the system workflow step-by-step to understand how this particular system operates and how you can construct a similar one.
 
-1. **Accessing the Website:** When a user types in  [https://jakobzhao.github.io/participatory-mapping/](https://jakobzhao.github.io/participatory-mapping/) in their browser, they are directed to the `index.html` file in the `docs` folder. This is because GitHub Pages, which is being used to host this site, serves static files and the docs folder is set as the root directory for the website.
+1. **Accessing the Website:** When a user types in  [https://jakobzhao.github.io/participatory-mapping/](https://jakobzhao.github.io/participatory-mapping/) in their browser, they are directed to the `index.html` file in the `docs` folder. This is because **GitHub Pages**, which is being used to host this site, serves static files and the docs folder is set as the root directory for the website.
 
 2. **Client-Side Operations:** The `index.html` page serves as the client-side of the application, housing the primary functions of the participatory mapping tool. It can dispatch requests to, and receive responses from, the web services hosted on Heroku. For instance, when a user fills out a form and clicks the `submit` button, the client-side code sends a request to the server-side code, which then stores the user-contributed data in the database. The function `submitNewRecord` in the `index.html` file manages the data submission process. In this function, the code snippet `await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/add-record', settings)` forwards the data to the server-side code via the `/add-record` route. The `addRecord` function in the `controllers/productController.js` file processes the data and stores it in the database.
 
@@ -108,8 +113,6 @@ Let's delve into the system workflow step-by-step to understand how this particu
 4. **Web Services:** The server-side code handles client-side requests, processing them to return the appropriate response. These web services can retrieve existing data from the database or store new user-contributed data. For example, the `addRecord` function, defined in `controllers/productController.js`, extracts the contributed data (e.g., contributor, content, lat, lng) and stores them in the database. The code snippet `let {recordRows} = await db.query('INSERT INTO `tblRecord`(contributor, content, lat, lng) VALUES ($1, $2, $3, $4)', [contributor, content, lat, lng])` is used for this purpose.
 
 5. **Database Operations:** The application uses a PostgreSQL database to store and manage data. This database is cloud-hosted through Heroku. Connection information for this database is provided in the `src/config/database.js` file, ensuring successful execution of the SQL statement in the data query method `db.query()`.
-  
-This workflow illustrates how the system uses a combination of static web hosting (via GitHub Pages), server-side operations (via Heroku and Node.js), and cloud-based database management (via Heroku and PostgreSQL) to provide a dynamic and interactive participatory mapping tool.
 
 
 ## 4. Deploy your project on Heroku
@@ -140,7 +143,6 @@ To deploy your forked GitHub repository to Heroku, you'll need to follow these s
   * Choose the appropriate buildpack for your application. Since we are deploying a Node.js app, select the `Node.js` buildpack.
   * Click the `Save changes` button to update the buildpacks.
 
-
 Congratulations! You have successfully deployed your forked GitHub repository to Heroku. The app is now live and accessible to the public. You can continue making changes to your repository and deploying updates to Heroku using the configured automatic deployment or manually triggering deployments. Remember to regularly check your Heroku app dashboard for logs and potential issues. You can also monitor your app's performance, scale it as needed, and manage other aspects of your deployed application through the Heroku dashboard.
 
 
@@ -157,7 +159,7 @@ This participatory mapping tool enables the data management through a cloud-base
 
 ![](img/database-credentials.png)
 
-* Connect to your Database: To connect to the database, you can use any PostgreSQL client, such as `pgAdmin`. You need to have pgAdmin installed on your machine. If you don't have it yet, you can download it from the official pgAdmin website. The installation process may vary depending on your operating system.
+* Connect to your Database: To connect to the database, you can use any PostgreSQL client, such as `pgAdmin`. You need to have pgAdmin installed on your machine. If you don't have it yet, you can download it from the [official pgAdmin website](https://www.postgresql.org/ftp/pgadmin/pgadmin4/). The installation process may vary depending on your operating system.
 
 * After installing pgAdmin, open it. You will see the pgAdmin dashboard. In pgAdmin, servers are essentially connections to databases. To create a new server:
   * Right-click on the `Servers` in the left panel and choose `Register > Server...`. 
@@ -184,8 +186,8 @@ Currently, the forked project is successfully deployed on Heroku, and the databa
 
 * Access the map:
   * **Method 1:** On your Heroku dashboard, go to the `Settings` tab and find the URL under the `Domains` section. This URL serves as the direct link to your map. Additionally, you can access the map by clicking the `View` button located at the top right corner of the dashboard. The URL follows a format like https://your-app-name.herokuapp-random-token.com/. For example, you can access the demo map using the URL https://participatory-mapping-70cdde6a8df5.herokuapp.com.
-  * Method 2: If you find the Heroku URL lengthy and difficult to remember (due to the random token), you have another option. You can access your map through your-account-name.github.io. To do this, visit your GitHub repository page, navigate to `Settings`, and scroll down to the `GitHub Pages` section under the `General` tab. Here, you will find the URL for your map. Please ensure that your web map is built and deployed using the docs folder in the main branch. After saving your settings, your map will be accessible via a URL like https://your-account-name.github.io/your-repository-name/. For example, the demo map can be accessed through the URL https://jakobzhao.github.io/participatory-mapping/.
-  * Method 3: If you wish to customize the domain name further, you have options available. Please refer to the [GitHub documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages) for more details. for detailed instructions on customizing the domain name. Alternatively, you can customize the domain through Heroku. For more information, consult the [Heroku documentation](https://devcenter.heroku.com/articles/custom-domains).
+  * **Method 2:** If you find the Heroku URL lengthy and difficult to remember (due to the random token), you have another option. You can access your map through your-account-name.github.io. To do this, visit your GitHub repository page, navigate to `Settings`, and scroll down to the `GitHub Pages` section under the `General` tab. Here, you will find the URL for your map. Please ensure that your web map is built and deployed using the `docs` folder in the main branch. It is worth noting that, in the file `src/app.js`, please add the `https://your-account-name.github.io` (`your-account-name` in the url should be replaced by your actual account name) to the `origin` property of the `corsOptions` variable. By doing so, the data changes between heroku and `your-account-name.github.io` will be granted. This edit should be done in your forked repository, if you turn on the `automatic deploys` function, this corsOption will be immediately applied.Now, your map will be appropriately accessible via the URL https://your-account-name.github.io/your-repository-name/. For example, the demo map can be accessed through the URL https://jakobzhao.github.io/participatory-mapping/.
+  * **Method 3:** If you wish to customize the domain name further, you have options available. Please refer to the [GitHub documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages) for more details. for detailed instructions on customizing the domain name. Alternatively, you can customize the domain through Heroku. For more information, consult the [Heroku documentation](https://devcenter.heroku.com/articles/custom-domains).
 
 * Updating the Info Panel:
 
@@ -238,8 +240,8 @@ Now, your map is ready to collect your data. You can share the map with your tar
 
 This text provides a detailed, step-by-step tutorial on how to create a minimum viable participatory mapping project using several technical skills and platforms, including HTML, CSS, JavaScript, command line, Node.js, PostgreSQL, GitHub, and Heroku. The author effectively demystifies the process of participatory mapping by explaining concepts and providing actionable instructions.
 
-Participatory mapping, as the author noted, is a crucial tool that empowers local communities to document their knowledge and experiences about their environment, thus supporting decision-making processes. Examples of participatory mapping initiatives given in the text underscore its use for diverse purposes such as natural resource management, land use planning, or advocacy for land rights.
+Participatory mapping, as the author noted, is a crucial tool that empowers local communities to document their knowledge and experiences about their environment, thus supporting decision-making processes.
 
 However, the complexity of the tutorial implies that this process is best suited for those with a foundational understanding of the technologies involved. The tutorial may be overwhelming for those without a background in these technologies or novice users. Furthermore, the cost of Heroku services could also be a limiting factor for some.
 
-In conclusion, participatory mapping holds significant potential as a tool for community engagement and representation. Despite some limitations, with careful execution and continuous enhancements, it can serve as an empowering platform that truly reflects the lived experiences of communities. As digital geographers continue to explore this field, we can expect to see more diverse and inclusive mapping projects that capture the myriad ways in which we relate to and experience our environment. 
+ Despite some limitations, with careful execution and continuous enhancements, it can serve as an empowering platform that truly reflects the lived experiences of communities. As digital geographers continue to explore this field, we can expect to see more diverse and inclusive mapping projects that capture the myriad ways in which we relate to and experience our environment. 
