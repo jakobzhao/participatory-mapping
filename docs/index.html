@@ -102,7 +102,7 @@
 
         // Fetch existing records when the window is loaded
         window.addEventListener("load", async function () {
-            let response = await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/get-record', {
+            let response = await fetch('https://geog328-1d351b8a161c.herokuapp.com/api/get-record', {
                 method: 'GET'
             });
 
@@ -203,7 +203,7 @@
 
             try {
                 // Send the POST request to add the new record
-                await fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/add-record', settings);
+                await fetch('https://geog328-1d351b8a161c.herokuapp.com/api/add-record', settings);
             } catch (err) {
                 // Handle any errors that occur during the request
                 console.error(err);
