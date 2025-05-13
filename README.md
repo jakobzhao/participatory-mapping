@@ -5,7 +5,6 @@ Bo Zhao | Department of Geography |  University of Washington
 ***First release:*** June 17th, 2023 | ***Last Update:*** June 23th, 2023
 
 > **Cite this work:** Zhao, Bo, 2023, "Crafting Your Own Participatory Mapping Project: A Guide", https://doi.org/10.7910/DVN/VSND2H, *Harvard Dataverse*, V1
-> 
 
 Participatory mapping, also known as community-based mapping, is a general term that refers to the process of creating maps by, for, or with local communities. It allows local communities to represent their own perceptions, knowledge, and experiences about their environment. These maps can be used for a variety of purposes, such as natural resource management, land use planning, advocacy for land rights, counter-mapping, etc. Examples include [`Shifting LGBTQ+ Spaces`](https://hgis.uw.edu/lgbtqspaces), [`Archiving the CHOP`](https://hgis.uw.edu/chop/), and [`Queering the Map`](https://www.queeringthemap.com/).
 
@@ -188,9 +187,48 @@ This participatory mapping tool enables the data management through a cloud-base
 Currently, the forked project is successfully deployed on Heroku, and the database is initialized. In this phase, we will guide you through the steps to customize the project and publish it online.
 
 * Access the map:
-  * **Method 1:** On your Heroku dashboard, go to the `Settings` tab and find the URL under the `Domains` section. This URL serves as the direct link to your map. Additionally, you can access the map by clicking the `View` button located at the top right corner of the dashboard. The URL follows a format like https://your-app-name.herokuapp-random-token.com/. For example, you can access the demo map using the URL [https://participatory-mapping-70cdde6a8df5.herokuapp.com](https://pmap-28a9a9408e2b.herokuapp.com/).
+  * **Method 1:** On your Heroku dashboard, go to the `Settings` tab and find the URL under the `Domains` section. This URL serves as the direct link to your map. Additionally, you can access the map by clicking the `View` button located at the top right corner of the dashboard. The URL follows a format like https://your-app-name.herokuapp-random-token.com/. For example, you can access the demo map using the URL [https://pmap-28a9a9408e2b.herokuapp.com/](https://pmap-28a9a9408e2b.herokuapp.com/).
   * **Method 2:** If you find the Heroku URL lengthy and difficult to remember (due to the random token), you have another option. You can access your map through your-account-name.github.io. To do this, visit your GitHub repository page, navigate to `Settings`, and scroll down to the `GitHub Pages` section under the `General` tab. Here, you will find the URL for your map. Please ensure that your web map is built and deployed using the `docs` folder in the main branch. It is worth noting that, in the file `src/app.js`, please add the `https://your-account-name.github.io` (`your-account-name` in the url should be replaced by your actual account name) to the `origin` property of the `corsOptions` variable. By doing so, the data changes between heroku and `your-account-name.github.io` will be granted. This edit should be done in your forked repository, if you turn on the `automatic deploys` function, this corsOption will be immediately applied.Now, your map will be appropriately accessible via the URL https://your-account-name.github.io/your-repository-name/. For example, the demo map can be accessed through the URL https://jakobzhao.github.io/participatory-mapping/.
   * **Method 3:** If you wish to customize the domain name further, you have options available. Please refer to the [GitHub documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages) for more details. for detailed instructions on customizing the domain name. Alternatively, you can customize the domain through Heroku. For more information, consult the [Heroku documentation](https://devcenter.heroku.com/articles/custom-domains).
+* Updating the data retreival and editing process:
+  * To retrieve the data from the database, you need to update the URL in the `index.html` file. In the `index.html` file, locate the code snippet that retrieves the data from the database. It should look like this:
+
+  ```javascript
+  fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/get-records')
+    .then(response => response.json())
+    .then(data => {
+      // Process the data here
+    });
+  ```
+
+  * Update the URL to point to your Heroku app. For example, if your Heroku app is named `my-app-name`, update the URL to:
+
+  ```javascript
+  fetch('https://my-app-name.herokuapp.com/api/get-records')
+    .then(response => response.json())
+    .then(data => {
+      // Process the data here
+    });
+  ```
+  * This change ensures that the data retrieval process is directed to your Heroku app, allowing you to access the data stored in your PostgreSQL database. By the same token, you can also update the URL for the data editing process. In the `index.html` file, locate the code snippet that retrieves the data from the database. It should look like this:
+
+  ```javascript
+  fetch('https://participatory-mapping-70cdde6a8df5.herokuapp.com/api/edit-record')
+    .then(response => response.json())
+    .then(data => {
+      // Process the data here
+    });
+  ```
+  * Update the URL to point to your Heroku app. For example, if your Heroku app is named `my-app-name`, update the URL to:
+
+  ```javascript
+  fetch('https://my-app-name.herokuapp.com/api/edit-record')
+    .then(response => response.json())
+    .then(data => {
+      // Process the data here
+    });
+  ```
+  * This change ensures that the data retrieval process is directed to your Heroku app, allowing you to access the data stored in your PostgreSQL database. By the same token, you can also update the URL for the data editing process.
 
 * Updating the Info Panel:
 
